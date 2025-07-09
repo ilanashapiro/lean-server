@@ -139,8 +139,10 @@ SAVE_LOC = Path("lean-sft-data-deepseekV1")
 SAVE_LOC.mkdir(parents=True, exist_ok=True)
 OUT_PATH_JSONL = SAVE_LOC.with_suffix(".jsonl")
 
-SPLIT = "train-sft"
-NUM_EXAMPLES = 27550 
+DATASET = load_dataset("deepseek-ai/DeepSeek-Prover-V1") # keys: ['name', 'split', 'formal_statement', 'goal', 'header', 'formal_proof']
+TRAIN_DATA = list(DATASET["train"]) # this should load in order, can write sorting function if we run into issues
+
+NUM_EXAMPLES = len(TRAIN_DATA) 
 START_INDEX = sum(1 for f in SAVE_LOC.iterdir() if f.is_file())
 
 def combine_to_jsonl(src_dir: Path, out_file: Path) -> None:
@@ -182,10 +184,7 @@ def augment():
     print(f"Starting SFT augmentation from index {START_INDEX} for {NUM_EXAMPLES} examples.")
     augmented_count = 0
 
-    dataset = load_dataset("deepseek-ai/DeepSeek-Prover-V1") # keys: ['name', 'split', 'formal_statement', 'goal', 'header', 'formal_proof']
-    train_data = list(dataset["train"]) # this should load in order, can write sorting function if we run into issues
-
-    for datum in train_data[START_INDEX:START_INDEX + NUM_EXAMPLES]:
+    for datum in TRAIN_DATA[START_INDEX:START_INDEX + NUM_EXAMPLES]:
         user_prompt = USER_PROMPT_FORMAT.format(theorem=datum["formal_statement"], file_context=datum["header"])
         proof       = datum["formal_proof"]
         prompt      = get_prompt_reasoning(language="Coq",
@@ -231,7 +230,7 @@ def augment():
         print(f"{augmented_count+START_INDEX}/{NUM_EXAMPLES} done  ->  {SAVE_LOC}", file=sys.stderr)
 
     print(f"Wrote {augmented_count} files to “{SAVE_LOC}”.")
-    
+
 if __name__ == "__main__":
-    augment()
-    # combine_to_jsonl(SAVE_LOC, OUT_PATH_JSONL)
+    # augment()
+    combine_to_jsonl(SAVE_LOC, OUT_PATH_JSONL)
