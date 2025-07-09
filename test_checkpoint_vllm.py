@@ -15,21 +15,9 @@ from tqdm import tqdm
 from torch.utils.data import Dataset
 from vllm import LLM, SamplingParams
 from transformers import AutoTokenizer
-from example import check_ground_truth, Task, CheckingResult, VerificationResult, ErrorResult
 
-def check_ground_truth_local(task: Task):
-    return check_ground_truth(task)
-
-def get_checked_results(tasks: list[Task]) -> list[CheckingResult]:
-    print("Checking proofs in parallel...")
-    # logging.basicConfig(level=logging.INFO)
-    logging.disable(logging.CRITICAL)
-    
-    # Parallel checking (Number of processes should match the number of server threads.)
-    with multiprocessing.Pool(8) as pool:
-        results = pool.map(check_ground_truth_local, tasks)
-
-    return results
+sys.path.append("kimina-lean-server")
+from client import Lean4Client
 
 if __name__ == "__main__":
     # Argument parsing
@@ -47,52 +35,52 @@ if __name__ == "__main__":
     with open("coq-test-data-with-responses.jsonl") as file:
         for line in file:
             valid_data.append(json.loads(line))
-    # if args.debug:
-    #     valid_data = valid_data[:100]
-    # else:
-    #     valid_data = valid_data[:600] # can use c. 700 for test benchmark
+    if args.debug:
+        valid_data = valid_data[:100]
+    else:
+        valid_data = valid_data[:600] # can use c. 700 for test benchmark
 
-    # # Load tokenizer and vLLM engine
-    # print(f"Loading tokenizer and checkpoint from {args.model_name}... ", end="")
-    # tokenizer = AutoTokenizer.from_pretrained(args.model_name)
-    # tokenizer.padding_side = "left"
-    # llm = LLM(model=args.model_name, dtype="bfloat16", max_model_len=16384, tensor_parallel_size=args.num_gpus)
+    # Load tokenizer and vLLM engine
+    print(f"Loading tokenizer and checkpoint from {args.model_name}... ", end="")
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+    tokenizer.padding_side = "left"
+    llm = LLM(model=args.model_name, dtype="bfloat16", max_model_len=16384, tensor_parallel_size=args.num_gpus)
 
-    # # Prepare prompts
-    # print("Preparing prompts...")
-    # prompts = []
-    # prompt_to_index = []  # (datum_idx, sample_idx)
-    # for datum_idx, datum in enumerate(tqdm(valid_data)):
-    #     prompt = datum["user_prompt"]
-    #     if len(tokenizer(prompt).input_ids) > 8192:
-    #         continue
-    #     for sample_idx in range(args.sample_n):
-    #         prompts.append(prompt)
-    #         prompt_to_index.append((datum_idx,sample_idx))
+    # Prepare prompts
+    print("Preparing prompts...")
+    prompts = []
+    prompt_to_index = []  # (datum_idx, sample_idx)
+    for datum_idx, datum in enumerate(tqdm(valid_data)):
+        prompt = datum["user_prompt"]
+        if len(tokenizer(prompt).input_ids) > 8192:
+            continue
+        for sample_idx in range(args.sample_n):
+            prompts.append(prompt)
+            prompt_to_index.append((datum_idx,sample_idx))
 
-    # # Generate with vLLM
-    # print(f"Sampling responses... {args.sample_n} samples per prompt, temp={args.temperature}")
-    # sampling_params = SamplingParams(temperature=args.temperature, max_tokens=16384, n=1)
-    # outputs = llm.generate(prompts, sampling_params)
-    # print("Done sampling")
+    # Generate with vLLM
+    print(f"Sampling responses... {args.sample_n} samples per prompt, temp={args.temperature}")
+    sampling_params = SamplingParams(temperature=args.temperature, max_tokens=16384, n=1)
+    outputs = llm.generate(prompts, sampling_params)
+    print("Done sampling")
 
-    # # Organize responses into valid_data
-    # for datum in valid_data:
-    #     datum["model_generated_response"] = [] # length of this list will be sample_n
+    # Organize responses into valid_data
+    for datum in valid_data:
+        datum["model_generated_response"] = [] # length of this list will be sample_n
 
-    # for output, (datum_idx, _) in zip(outputs, prompt_to_index):
-    #     response = output.outputs[0].text
-    #     if "<answer>" in response and "</answer>" in response:
-    #         valid_data[datum_idx]["model_generated_response"].append(response) # recall datum_idx is the line number in the jsonl file
+    for output, (datum_idx, _) in zip(outputs, prompt_to_index):
+        response = output.outputs[0].text
+        if "<answer>" in response and "</answer>" in response:
+            valid_data[datum_idx]["model_generated_response"].append(response) # recall datum_idx is the line number in the jsonl file
     
-    # output_path = "coq-test-data-with-responses.jsonl"
+    output_path = "coq-test-data-with-responses.jsonl"
 
-    # with open(output_path, "a") as f:
-    #     for datum in valid_data:
-    #         json.dump(datum, f)
-    #         f.write("\n")
+    with open(output_path, "a") as f:
+        for datum in valid_data:
+            json.dump(datum, f)
+            f.write("\n")
 
-    # print(f"Saved {len(valid_data)} entries to {output_path}")
+    print(f"Saved {len(valid_data)} entries to {output_path}")
 
     # Evaluation
     pass_n_cnt = [0 for _ in range(args.sample_n)]
@@ -101,28 +89,24 @@ if __name__ == "__main__":
     
     tasks = []
     for datum in valid_data:
-        split = datum["split"]
-        index = datum["index"]
-        prompt = datum["user_prompt"]
-        pass_flag = False
+        datum_id = datum["extra_info"]["example_name"]
+        prompt = datum["prompt"]["content"]
         model_generated_responses = datum["model_generated_response"]
-        tasks = [Task.from_json({"split": split, "index": index, "ground_truth": response.split("<answer>")[1].split("</answer>")[0]}) for response in model_generated_responses]
-        checked_results = get_checked_results(tasks)
+        answers = [response.split("<answer>")[1].split("</answer>")[0] for response in model_generated_responses]
+        pass_flag = False
         
-        for i, checked_result in enumerate(checked_results):
-            if type(checked_result) is VerificationResult:
-                result_value, errormsg = checked_result.success, checked_result.messages
-            elif type(checked_result) is ErrorResult: # ErrorResult
-                result_value, errormsg = False, checked_result.error
-            else:
-                raise ValueError(f"Unexpected result type: {type(checked_result)}")
+        kimina_requests = [{"proof:": answer, "custom_id": datum_id} for answer in answers]
+        client = Lean4Client(base_url="http://127.0.0.1:12332")
+        responses = client.verify(kimina_requests, timeout=30)
+        
+        for i, response in enumerate(responses):
+            # INSPECT KIMINA OUTPUT FORMAT WHEN WE HAVE DATA
 
             if result_value:
                 pass_flag = True
             pass_n_cnt[i] += 1 if pass_flag else 0
 
             if args.debug:
-                print("SPLIT", split, "INDEX:", index)
                 # print("Prompt:")
                 # print(prompt)
                 # print("Model Output:")
