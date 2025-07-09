@@ -1,7 +1,7 @@
 lean-sft-data-deepseekV1/
-lean-sft-data/
 lean-test-data-MiniF2F/
-lean-val-data-FVAPPS/
+lean-rl-data-FVAPPS/
+lean-rl-data-Lean-Workbook/
 lean-test-data-Verina/
 __pycache__/
 trapi_DO_NOT_COMMIT.py

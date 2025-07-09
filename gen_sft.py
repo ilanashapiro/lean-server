@@ -133,7 +133,7 @@ c
 
 MAX_RETRIES = 3          # how many times to retry the call
 BACKOFF     = 5          # seconds to wait between retries
-USER_PROMPT_FORMAT = """The theorem I'm trying to prove is \n```\n{theorem}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\n. I need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
+USER_PROMPT_FORMAT = """The theorem I'm trying to prove is \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\n. I need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
 
 SAVE_LOC = Path("lean-sft-data-deepseekV1")
 SAVE_LOC.mkdir(parents=True, exist_ok=True)
@@ -185,7 +185,7 @@ def augment():
     augmented_count = 0
 
     for datum in TRAIN_DATA[START_INDEX:START_INDEX + NUM_EXAMPLES]:
-        user_prompt = USER_PROMPT_FORMAT.format(theorem=datum["formal_statement"], file_context=datum["header"])
+        user_prompt = USER_PROMPT_FORMAT.format(formal_statement=datum["formal_statement"], file_context=datum["header"])
         proof       = datum["formal_proof"]
         prompt      = get_prompt_reasoning(language="Coq",
                                     instruction=user_prompt,
