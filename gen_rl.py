@@ -11,13 +11,13 @@ class DataSource(Enum):
     MINIF2F = "MiniF2F"
     LEAN_WORKBOOK = "Lean-Workbook"
 
-DATA_SOURCE_ENUM = DataSource.VERINA
+DATA_SOURCE_ENUM = DataSource.LEAN_WORKBOOK
 DATA_SOURCE = DATA_SOURCE_ENUM.value
 
-USER_PROMPT_VERINA = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features. Start your proof with: \n```\n{formal_statement}\n```"""
-USER_PROMPT_FVAPPS = """The question I need to answer in Lean 4 is as follows: \n```\n{question}\n```\n#####\n\nTo answer this question, you need to replace the {num_sorries} \"sorry\" keywords in the following Lean spec with Lean proofs that make the resulting Lean executable work: \n```\n{spec}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features. Start your proof with: \n```\n{formal_statement}\n```"""
-USER_PROMPT_MINIF2F = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features. Start your proof with: \n```\n{formal_statement}\n```"""
-USER_PROMPT_LEAN_WORKBOOK = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features. Start your proof with: \n```\n{formal_statement}\n```"""
+USER_PROMPT_VERINA = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
+USER_PROMPT_FVAPPS = """The question I need to answer in Lean 4 is as follows: \n```\n{question}\n```\n#####\n\nTo answer this question, you need to replace the {num_sorries} \"sorry\" keywords in the following Lean 4 spec with Lean 4 proofs that make the resulting Lean 4 executable work: \n```\n{spec}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
+USER_PROMPT_MINIF2F = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
+USER_PROMPT_LEAN_WORKBOOK = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
 
 GOEDEL_AUX_DICT = None # auxiliary dataset for full proofs from Goedel for Lean Workbook, not relevant otherwise
 match DATA_SOURCE_ENUM:
@@ -37,6 +37,8 @@ match DATA_SOURCE_ENUM:
         SPLIT = "rl"
     case _:
         raise ValueError(f"Unsupported data source: {DATA_SOURCE_ENUM}")
+
+BUILD_FVAPPS_INCREMENTAL = False # if True, we build up the dependent proofs/defs incrementally (i.e.  sorry, 2 sorries, 3 sorries, etc.) for FVAPPS
 
 SAVE_LOC = Path(f"lean-{SPLIT}-data-{DATA_SOURCE}")
 SAVE_LOC.mkdir(parents=True, exist_ok=True)
@@ -124,6 +126,18 @@ def parse_goedel_proof(problem_id):
     # print(res["ground_truth"])
     # sys.exit(0)
 
+def parse_fvapps_spec(spec):
+    blocks = []
+    start = 0
+
+    for match in re.finditer(r'\bsorry\b', spec):
+        end = match.end()
+        block = spec[start:end]
+        blocks.append(block)
+        start = end  # next block starts after this "sorry"
+
+    return blocks
+
 def split_train_val(input_jsonl, val_size=200, seed=42):
     with open(input_jsonl, 'r', encoding='utf-8') as f:
         lines = f.readlines()
@@ -150,6 +164,35 @@ def split_train_val(input_jsonl, val_size=200, seed=42):
                 train_f.write(line)
     print(f"Saved {len(lines) - val_size} entries to {train_path} and {val_size} entries to {val_path}")
 
+def save_entry(datum_id, user_prompt, ground_truth, context):
+    entry = {
+        "data_source": DATA_SOURCE,
+        "prompt": [{"role": "user", "content": user_prompt}],
+        "ability": "programming",
+        "reward_model": {"style": "execution", "ground_truth": ground_truth},
+        "extra_info": {
+            "language": "Lean", # "F*" "Coq" "Lean"
+            "example_name": datum_id,
+            "prompt": user_prompt,
+            "ground_truth": ground_truth,
+            "context": context,
+            "need_tools_kwargs": True,
+            "tools_kwargs": {
+                "tools/execute_lean": {
+                    "example_name": datum_id,
+                }
+            },
+        }
+    }
+
+    # ──────────────────────────────────────────────────────────────
+    # Write ONE file per example
+    #   e.g.  sft-data/train-sft_226.json
+    # ──────────────────────────────────────────────────────────────
+    out_path = SAVE_LOC / f"{datum_id}.json"
+    with open(out_path, "w", encoding="utf-8") as f_out:
+        json.dump(entry, f_out, ensure_ascii=False, indent=2)
+
 def augment():
     print(f"Starting RL augmentation from index {START_INDEX} for {NUM_EXAMPLES} examples in data source {DATA_SOURCE}.")
     augmented_count = 0
@@ -158,26 +201,47 @@ def augment():
         match DATA_SOURCE_ENUM:
             case DataSource.VERINA: # keys: ['id', 'description', 'lean_code', 'signature', 'metadata', 'tests', 'reject_inputs', 'difficulty']
                 parsed_lean_code = parse_verina_lean_code(datum['lean_code'])
+                context = parsed_lean_code["context"]
                 user_prompt = USER_PROMPT_VERINA.format(
                     informal_statement=datum["description"], 
                     formal_statement=parsed_lean_code["formal_statement"], 
-                    file_context=parsed_lean_code["context"]
+                    file_context=context
                 )
                 datum_id = datum["id"]
                 ground_truth = parsed_lean_code["ground_truth"]
             case DataSource.FVAPPS: # keys: ['apps_id', 'apps_question', 'spec', 'units', 'sorries', 'apps_difficulty', 'assurance_level']
-                user_prompt = USER_PROMPT_FVAPPS.format(
-                    question=datum["apps_question"], 
-                    num_sorries=datum['sorries'], 
-                    spec=datum["spec"]
-                )
-                datum_id = datum["apps_id"]
-                ground_truth = None
+                if BUILD_FVAPPS_INCREMENTAL:
+                    specs = parse_fvapps_spec(datum["spec"]) # build up the dependent proofs/defs incrementally (i.e.  sorry, 2 sorries, 3 sorries, etc.)
+                    subproofs_info = {}
+                    for i, spec in enumerate(specs, start=1):
+                        user_prompt = USER_PROMPT_FVAPPS.format(
+                            question=datum["apps_question"], 
+                            num_sorries=datum['sorries'], 
+                            spec=spec
+                        )
+                        context = "" # in FVAPPS, we replace the sorries directly with proofs in the file, so we don't record context here
+                        datum_id = datum["apps_id"] + f"_{i}" 
+                        ground_truth = None
+                        subproofs_info[datum_id] = {
+                            "user_prompt": user_prompt,
+                            "ground_truth": ground_truth,
+                            "context": context
+                        }
+                else: # just use the full spec with all sorries
+                    user_prompt = USER_PROMPT_FVAPPS.format(
+                        question=datum["apps_question"], 
+                        num_sorries=datum['sorries'], 
+                        spec=datum["spec"]
+                    )
+                    context = "" # in FVAPPS, we replace the sorries directly with proofs in the file, so we don't record context here
+                    datum_id = datum["apps_id"]
+                    ground_truth = None 
             case DataSource.MINIF2F: # keys: ['name', 'split', 'informal_prefix', 'formal_statement', 'goal', 'header']
+                context = datum["header"]
                 user_prompt = USER_PROMPT_MINIF2F.format(
                     informal_statement=datum["informal_prefix"], 
                     formal_statement=datum["formal_statement"], 
-                    file_context=datum["header"]
+                    file_context=context
                 )
                 datum_id = datum["name"]
                 ground_truth = None
@@ -196,35 +260,15 @@ def augment():
             case _:
                 raise ValueError(f"Unsupported data source: {DATA_SOURCE_ENUM}")
 
-        entry = {
-            "data_source": DATA_SOURCE,
-            "prompt": [{"role": "user", "content": user_prompt}],
-            "ability": "programming",
-            "reward_model": {"style": "execution", "ground_truth": ground_truth},
-            "extra_info": {
-                "language": "Lean", # "F*" "Coq" "Lean"
-                "example_name": datum_id,
-                "prompt": user_prompt,
-                "ground_truth": ground_truth,
-                "need_tools_kwargs": True,
-                "tools_kwargs": {
-                    "tools/execute_fstar": {
-                        "example_name": datum_id
-                    }
-                },
-            }
-        }
-
-        # ──────────────────────────────────────────────────────────────
-        # Write ONE file per example
-        #   e.g.  sft-data/train-sft_226.json
-        # ──────────────────────────────────────────────────────────────
-        out_path = SAVE_LOC / f"{datum_id}.json"
-        with open(out_path, "w", encoding="utf-8") as f_out:
-            json.dump(entry, f_out, ensure_ascii=False, indent=2)
-
-        augmented_count += 1
-        print(f"{augmented_count+START_INDEX}/{NUM_EXAMPLES} done  ->  {SAVE_LOC}", file=sys.stderr)
+        if DATA_SOURCE_ENUM == DataSource.FVAPPS and BUILD_FVAPPS_INCREMENTAL: # save all the subproofs we build incrementally from the spec
+            for datum_id, info in subproofs_info.items():
+                save_entry(datum_id, info["user_prompt"], info["ground_truth"], info["context"])
+                augmented_count += 1
+                print(f"{augmented_count+START_INDEX}/{NUM_EXAMPLES} done  ->  {SAVE_LOC}", file=sys.stderr)
+        else:
+            save_entry(datum_id, user_prompt, ground_truth, context)
+            augmented_count += 1
+            print(f"{augmented_count+START_INDEX}/{NUM_EXAMPLES} done  ->  {SAVE_LOC}", file=sys.stderr)
 
     print(f"Wrote {augmented_count} files to “{SAVE_LOC}”.")
     

@@ -111,7 +111,7 @@ def get_prompt_reasoning(language, instruction, response):
 
     Each of these is of the form `sq_nonneg(expression)`, asserting that the square of a real-valued
     expression is non-negative.
-c
+
     These inequalities enrich the searh space for `nlinarith` and allow it to verify the desired inequality.
 
     Step 4: Conclusion
