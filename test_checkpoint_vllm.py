@@ -73,7 +73,7 @@ if __name__ == "__main__":
         if "<answer>" in response and "</answer>" in response:
             valid_data[datum_idx]["model_generated_response"].append(response) # recall datum_idx is the line number in the jsonl file
     
-    output_path = "coq-test-data-with-responses.jsonl"
+    output_path = "lean-test-data-with-responses.jsonl"
 
     with open(output_path, "a") as f:
         for datum in valid_data:
@@ -85,17 +85,22 @@ if __name__ == "__main__":
     # Evaluation
     pass_n_cnt = [0 for _ in range(args.sample_n)]
     results = []
+    tasks = []
+    def reconstruct_lean_executable(datum, answer):
+        context = datum["extra_info"]["context"]
+        formal_statement = datum["extra_info"]["formal_statement"]
+        return f"{context}\n{formal_statement}\n{answer}"
+    
     print("Evaluating model outputs...")
     
-    tasks = []
     for datum in valid_data:
         datum_id = datum["extra_info"]["example_name"]
         prompt = datum["prompt"]["content"]
         model_generated_responses = datum["model_generated_response"]
         answers = [response.split("<answer>")[1].split("</answer>")[0] for response in model_generated_responses]
         pass_flag = False
-        
-        kimina_requests = [{"proof:": answer, "custom_id": datum_id} for answer in answers]
+
+        kimina_requests = [{"proof": reconstruct_lean_executable(datum, answer), "custom_id": datum_id} for answer in answers]
         client = Lean4Client(base_url="http://127.0.0.1:12332")
         responses = client.verify(kimina_requests, timeout=30)
         

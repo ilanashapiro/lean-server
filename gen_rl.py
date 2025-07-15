@@ -11,7 +11,7 @@ class DataSource(Enum):
     MINIF2F = "MiniF2F"
     LEAN_WORKBOOK = "Lean-Workbook"
 
-DATA_SOURCE_ENUM = DataSource.LEAN_WORKBOOK
+DATA_SOURCE_ENUM = DataSource.MINIF2F
 DATA_SOURCE = DATA_SOURCE_ENUM.value
 
 USER_PROMPT_VERINA = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
@@ -164,7 +164,7 @@ def split_train_val(input_jsonl, val_size=200, seed=42):
                 train_f.write(line)
     print(f"Saved {len(lines) - val_size} entries to {train_path} and {val_size} entries to {val_path}")
 
-def save_entry(datum_id, user_prompt, ground_truth, context):
+def save_entry(datum_id, user_prompt, ground_truth, context, formal_statement):
     entry = {
         "data_source": DATA_SOURCE,
         "prompt": [{"role": "user", "content": user_prompt}],
@@ -175,7 +175,8 @@ def save_entry(datum_id, user_prompt, ground_truth, context):
             "example_name": datum_id,
             "prompt": user_prompt,
             "ground_truth": ground_truth,
-            "context": context,
+            "context": context, # needed to reconstruct full Lean executable for Kimina server
+            "formal_statement": formal_statement, # needed to reconstruct full Lean executable for Kimina server
             "need_tools_kwargs": True,
             "tools_kwargs": {
                 "tools/execute_lean": {
@@ -201,10 +202,10 @@ def augment():
         match DATA_SOURCE_ENUM:
             case DataSource.VERINA: # keys: ['id', 'description', 'lean_code', 'signature', 'metadata', 'tests', 'reject_inputs', 'difficulty']
                 parsed_lean_code = parse_verina_lean_code(datum['lean_code'])
-                context = parsed_lean_code["context"]
+                context, formal_statement = parsed_lean_code["context"], parsed_lean_code["formal_statement"]
                 user_prompt = USER_PROMPT_VERINA.format(
                     informal_statement=datum["description"], 
-                    formal_statement=parsed_lean_code["formal_statement"], 
+                    formal_statement=formal_statement, 
                     file_context=context
                 )
                 datum_id = datum["id"]
@@ -233,11 +234,11 @@ def augment():
                         num_sorries=datum['sorries'], 
                         spec=datum["spec"]
                     )
-                    context = "" # in FVAPPS, we replace the sorries directly with proofs in the file, so we don't record context here
+                    context, formal_statement = "", "" # in FVAPPS, we replace the sorries directly with proofs in the file, so we don't record context here
                     datum_id = datum["apps_id"]
                     ground_truth = None 
             case DataSource.MINIF2F: # keys: ['name', 'split', 'informal_prefix', 'formal_statement', 'goal', 'header']
-                context = datum["header"]
+                context, formal_statement = datum["header"], datum["formal_statement"]
                 user_prompt = USER_PROMPT_MINIF2F.format(
                     informal_statement=datum["informal_prefix"], 
                     formal_statement=datum["formal_statement"], 
@@ -251,9 +252,10 @@ def augment():
                 if not context and not ground_truth:
                     print(f"Skipping example {datum['id']} due to missing context and ground truth.")
                     continue
+                formal_statement = datum["formal_statement"]
                 user_prompt = USER_PROMPT_LEAN_WORKBOOK.format(
                     informal_statement=datum["natural_language_statement"], 
-                    formal_statement=datum["formal_statement"], 
+                    formal_statement=formal_statement,
                     file_context=context
                 )
                 datum_id = datum["id"]
@@ -266,7 +268,7 @@ def augment():
                 augmented_count += 1
                 print(f"{augmented_count+START_INDEX}/{NUM_EXAMPLES} done  ->  {SAVE_LOC}", file=sys.stderr)
         else:
-            save_entry(datum_id, user_prompt, ground_truth, context)
+            save_entry(datum_id, user_prompt, ground_truth, context, formal_statement)
             augmented_count += 1
             print(f"{augmented_count+START_INDEX}/{NUM_EXAMPLES} done  ->  {SAVE_LOC}", file=sys.stderr)
 

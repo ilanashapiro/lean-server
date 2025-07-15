@@ -1,14 +1,27 @@
-# Use a small official Python image
 FROM python:3.11-slim
 
-# Set working directory inside container
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    curl git unzip build-essential libgmp-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Set workdir to top-level
 WORKDIR /app
 
-# Copy files into the container
-COPY kimina-lean-server/requirements.txt ./
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy kimina repo (assuming it’s in the build context)
+COPY kimina-lean-server ./kimina-lean-server
 
-COPY . .
+# Setup env
+WORKDIR /app/kimina-lean-server
+RUN cp .env.template .env
 
-# Run the script by default
-CMD ["python", "main.py"]
+# Install Python dependencies
+RUN pip install -e .
+
+# Run Lean setup
+RUN bash setup.sh
+
+# Expose FastAPI port
+EXPOSE 80
+
+# took ~6min to build
