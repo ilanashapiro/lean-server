@@ -7,4 +7,4 @@ __pycache__/
 trapi_DO_NOT_COMMIT.py
 lean-data.tar
 kimina-lean-server
-lean-env/
+venv/

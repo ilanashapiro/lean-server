@@ -86,10 +86,7 @@ if __name__ == "__main__":
     pass_n_cnt = [0 for _ in range(args.sample_n)]
     results = []
     tasks = []
-    def reconstruct_lean_executable(datum, answer):
-        context = datum["extra_info"]["context"]
-        formal_statement = datum["extra_info"]["formal_statement"]
-        return f"{context}\n{formal_statement}\n{answer}"
+    
     
     print("Evaluating model outputs...")
     
@@ -100,9 +97,14 @@ if __name__ == "__main__":
         answers = [response.split("<answer>")[1].split("</answer>")[0] for response in model_generated_responses]
         pass_flag = False
 
-        kimina_requests = [{"proof": reconstruct_lean_executable(datum, answer), "custom_id": datum_id} for answer in answers]
-        client = Lean4Client(base_url="http://127.0.0.1:12332")
-        responses = client.verify(kimina_requests, timeout=30)
+        payloads = [{
+            "solution": answer, 
+            "context": datum["extra_info"]["context"], 
+            "formal_statement": datum["extra_info"]["formal_statement"],
+            "problem_id": datum_id
+        } for answer in answers]
+
+        
         
         for i, response in enumerate(responses):
             # INSPECT KIMINA OUTPUT FORMAT WHEN WE HAVE DATA
@@ -122,7 +124,7 @@ if __name__ == "__main__":
                 print()
             else:
                 results.append({
-                    "example_name": f"{split}_{index}",
+                    "example_name": datum_id,
                     "prompt": prompt,
                     "model_output": model_generated_responses[i],
                     "result": result_value,
