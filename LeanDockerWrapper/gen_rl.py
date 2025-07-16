@@ -96,35 +96,46 @@ def parse_goedel_proof(problem_id):
     if not full_proof:
         return {"context": "", "ground_truth": ""}
 
-    # Remove multiline comments (including across lines)
+    # Remove multiline comments
     no_multiline = re.sub(r'/-(.|\n)*?-/', '', full_proof)
 
-    # Remove full-line single-line comments (i.e., lines starting with --)
+    # Remove full-line single-line comments
     cleaned_lines = []
     for line in no_multiline.splitlines():
-        stripped = line.strip()
-        if stripped.startswith("--"):
+        if line.strip().startswith("--"):
             continue
         cleaned_lines.append(line)
 
     cleaned_code = "\n".join(cleaned_lines)
 
-    # Find the start of the proof (i.e., the first "theorem ")
-    idx = cleaned_code.find("theorem ")
-    if idx == -1:
-        raise ValueError("No 'theorem ' found in the proof.")
+    # Find the last newline before 'theorem'
+    theorem_start = cleaned_code.find("theorem")
+    if theorem_start == -1:
+        raise ValueError("No 'theorem' found in the proof.")
+    
+    context_end = cleaned_code.rfind("\n", 0, theorem_start) + 1
+    context = cleaned_code[:context_end]
 
-    context = cleaned_code[:idx].rstrip()
-    ground_truth = cleaned_code[idx:].lstrip()
+    # Find the end of '... := ... by' and first newline after it
+    by_match = re.search(r"theorem\s.*?:=\s*.*?by\b", cleaned_code[context_end:], re.DOTALL)
+    if not by_match:
+        raise ValueError("No 'theorem ... := ... by' found after context.")
+
+    by_end = context_end + by_match.end()
+    next_newline = cleaned_code.find("\n", by_end)
+    if next_newline == -1:
+        ground_truth = ""  # No content after 'by'
+    else:
+        ground_truth = cleaned_code[next_newline + 1:]  # Everything *after* that newline
 
     return {
         "context": context,
-        "ground_truth": ground_truth,
+        "ground_truth": ground_truth
     }
+
     # print(res["context"])
     # print("#############################################################################################")
     # print(res["ground_truth"])
-    # sys.exit(0)
 
 def parse_fvapps_spec(spec):
     blocks = []
@@ -255,6 +266,8 @@ def augment():
                     print(f"Skipping example {datum['id']} due to missing context and ground truth.")
                     continue
                 formal_statement = datum["formal_statement"]
+                if formal_statement.endswith(" sorry"):
+                    formal_statement = formal_statement[:-6]  # remove the trailing " sorry"
                 user_prompt = USER_PROMPT_LEAN_WORKBOOK.format(
                     informal_statement=datum["natural_language_statement"], 
                     formal_statement=formal_statement,
