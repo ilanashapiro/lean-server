@@ -11,7 +11,7 @@ class DataSource(Enum):
     MINIF2F = "MiniF2F"
     LEAN_WORKBOOK = "Lean-Workbook"
 
-DATA_SOURCE_ENUM = DataSource.MINIF2F
+DATA_SOURCE_ENUM = DataSource.LEAN_WORKBOOK
 DATA_SOURCE = DATA_SOURCE_ENUM.value
 
 USER_PROMPT_VERINA = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
@@ -259,8 +259,8 @@ def augment():
             case DataSource.LEAN_WORKBOOK: # keys: ['id', 'status', 'tactic', 'state_before', 'state_after', 'natural_language_statement', 'answer', 'formal_statement']
                 parsed_goedel_proof = parse_goedel_proof(datum['id'])
                 context, ground_truth = parsed_goedel_proof["context"], parsed_goedel_proof["ground_truth"]
-                if not context and not ground_truth:
-                    print(f"Skipping example {datum['id']} due to missing context and ground truth.")
+                if not ground_truth:
+                    print(f"Skipping Lean Workbook example {datum['id']} due to missing ground truth and uncertain provability.")
                     continue
                 formal_statement = datum["formal_statement"]
                 if formal_statement.endswith(" sorry"):

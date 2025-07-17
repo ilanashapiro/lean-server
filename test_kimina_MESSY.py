@@ -3,13 +3,12 @@ import sys
 import time
 import json
 
-import server
+from wrapper_server import server
 
 from datasets import load_dataset
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
-PARENT_DIR = os.path.dirname(CURRENT_DIR)
-sys.path.append(os.path.join(PARENT_DIR, "kimina-lean-server"))
+sys.path.append(os.path.join("kimina-lean-server"))
 from client.client import Lean4Client, batch_verify_proof
 from utils.proof_utils import analyze
 

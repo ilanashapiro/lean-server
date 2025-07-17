@@ -16,8 +16,9 @@ from fastapi import HTTPException
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.dirname(CURRENT_DIR)
 sys.path.append(os.path.join(PARENT_DIR, "kimina-lean-server"))
+
 from client.client import Lean4Client, batch_verify_proof
-from utils.proof_utils import analyze, parse_client_response
+from utils.proof_utils import parse_client_response
 
 KIMINA_HOST = os.environ.get("KIMINA_HOST", "http://localhost:12332")
 KIMINA_CLIENT = None

@@ -1,7 +1,7 @@
 import os, sys, json, math
 import requests
 
-import server
+from wrapper_server import server
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -49,8 +49,9 @@ def test_batch_examples(payloads, url="http://localhost:8007/batch_check_problem
         print(f"Request failed for batch: {e}, returning -1")
 
 if __name__ == "__main__":
-    jsonl_path = os.path.join(CURRENT_DIR, "lean-test-data-Verina.jsonl")
+    jsonl_path = os.path.join(CURRENT_DIR, "wrapper_server/lean-test-data-Verina.jsonl")
+    jsonl_path = os.path.join(CURRENT_DIR, "wrapper_server/lean-train-rl-data-Lean-Workbook.jsonl")
 
     payloads = process_jsonl_file(jsonl_path, math.inf)[0:]
-    # test_single_examples(payloads)
-    test_batch_examples(payloads)
+    test_single_examples(payloads)
+    # test_batch_examples(payloads)
