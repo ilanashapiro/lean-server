@@ -1,7 +1,9 @@
-import LeanDockerWrapper.server.test_kimina_MESSY as test_kimina_MESSY
-import os, sys, json
+import os, sys, json, math
 import requests
+
 import server
+
+CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def process_jsonl_file(path, n_samples) -> list:
     payloads = []
@@ -9,9 +11,12 @@ def process_jsonl_file(path, n_samples) -> list:
         for line_num, line in enumerate(f, 1):
             try:
                 raw = json.loads(line)
+                ground_truth = raw["extra_info"]["ground_truth"]
+                if ground_truth is None:
+                    continue
                 payload_dict = {
                     "problem_id": raw["extra_info"]["example_name"],
-                    "answer": raw["extra_info"]["ground_truth"],
+                    "answer": ground_truth,
                 }
 
                 payload = server.Payload(**payload_dict)
@@ -44,8 +49,8 @@ def test_batch_examples(payloads, url="http://localhost:8007/batch_check_problem
         print(f"Request failed for batch: {e}, returning -1")
 
 if __name__ == "__main__":
-    jsonl_path = os.path.join(test_kimina_MESSY.CURRENT_DIR, "lean-train-rl-data-Lean-Workbook.jsonl")
+    jsonl_path = os.path.join(CURRENT_DIR, "lean-test-data-Verina.jsonl")
 
-    payloads = process_jsonl_file(jsonl_path, 50)[0:]
-    # test_single_examples(payloads)
-    test_batch_examples(payloads)
+    payloads = process_jsonl_file(jsonl_path, math.inf)[0:]
+    test_single_examples(payloads)
+    # test_batch_examples(payloads)

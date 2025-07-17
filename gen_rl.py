@@ -11,7 +11,7 @@ class DataSource(Enum):
     MINIF2F = "MiniF2F"
     LEAN_WORKBOOK = "Lean-Workbook"
 
-DATA_SOURCE_ENUM = DataSource.LEAN_WORKBOOK
+DATA_SOURCE_ENUM = DataSource.MINIF2F
 DATA_SOURCE = DATA_SOURCE_ENUM.value
 
 USER_PROMPT_VERINA = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
@@ -77,7 +77,7 @@ def parse_verina_lean_code(lean_code: str) -> dict[str, str]:
         raise ValueError("No benchmark start marker found in the provided Lean code.")
     
     formal_statement = "\n".join(remaining_lines[:benchmark_start_idx])
-    ground_truth = "\n".join(remaining_lines[:benchmark_start_idx] + remaining_lines[benchmark_start_idx + 1:]) if all("sorry" not in line for line in remaining_lines) else None
+    ground_truth = "\n".join(remaining_lines[benchmark_start_idx + 1:]) if all("sorry" not in line for line in remaining_lines) else None
 
     return {
         "context": context,
@@ -186,15 +186,12 @@ def save_entry(datum_id, user_prompt, ground_truth, context, formal_statement):
             "example_name": datum_id,
             "prompt": user_prompt,
             "ground_truth": ground_truth,
-            "context": context, # needed to reconstruct full Lean executable for Kimina server
-            "formal_statement": formal_statement, # needed to reconstruct full Lean executable for Kimina server
+            "context": context, # for debugging reconstructing full Lean executable
+            "formal_statement": formal_statement, # for debugging reconstructing full Lean executable
             "need_tools_kwargs": True,
             "tools_kwargs": {
                 "tools/execute_lean": {
-                    "example_name": datum_id,
-                    "context": context, # needed to reconstruct full Lean executable for Kimina server
-                    "formal_statement": formal_statement, # needed to reconstruct full Lean executable for Kimina server
-                }
+                    "example_name": datum_id,                }
             },
         }
     }
@@ -238,7 +235,7 @@ def augment():
                         ground_truth = None
                         subproofs_info[datum_id] = {
                             "user_prompt": user_prompt,
-                            "ground_truth": ground_truth,
+                            "ground_truth": None,
                             "context": context
                         }
                 else: # just use the full spec with all sorries
