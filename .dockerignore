@@ -7,3 +7,4 @@ __pycache__/
 LeanDockerWrapper/server/lean-rl-data-FVAPPS.jsonl
 LeanDockerWrapper/server/lean-rl-data-Lean-Workbook.jsonl
 LeanDockerWrapper/server/lean-data.tar
+lean_rl_db.db

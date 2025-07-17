@@ -144,7 +144,6 @@ def check_solution(json: Payload, timeout=30) -> Response:
     context, formal_statement = _get_context_and_formal_statement(json.problem_id)
     # print(context, formal_statement)
     full_lean_executable = _reconstruct_lean_executable(context, formal_statement, json.answer)
-    print("FULL LEAN EXECUTABLE:", full_lean_executable)
 
     try:
         kimina_requests = [{

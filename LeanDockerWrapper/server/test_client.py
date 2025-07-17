@@ -52,5 +52,5 @@ if __name__ == "__main__":
     jsonl_path = os.path.join(CURRENT_DIR, "lean-test-data-Verina.jsonl")
 
     payloads = process_jsonl_file(jsonl_path, math.inf)[0:]
-    test_single_examples(payloads)
-    # test_batch_examples(payloads)
+    # test_single_examples(payloads)
+    test_batch_examples(payloads)
