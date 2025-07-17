@@ -1,4 +1,4 @@
-import test_kimina
+import LeanDockerWrapper.server.test_kimina_MESSY as test_kimina_MESSY
 import os, sys, json
 import requests
 import server
@@ -12,8 +12,6 @@ def process_jsonl_file(path, n_samples) -> list:
                 payload_dict = {
                     "problem_id": raw["extra_info"]["example_name"],
                     "answer": raw["extra_info"]["ground_truth"],
-                    "context": raw["extra_info"]["context"],
-                    "formal_statement": raw["extra_info"]["formal_statement"]
                 }
 
                 payload = server.Payload(**payload_dict)
@@ -25,20 +23,29 @@ def process_jsonl_file(path, n_samples) -> list:
                 continue
     return payloads
 
-if __name__ == "__main__":
-    url = "http://localhost:8007/check_problem_solution"
-    jsonl_path = os.path.join(test_kimina.CURRENT_DIR, "lean-train-rl-data-Lean-Workbook.jsonl")
+def test_single_examples(payloads, url="http://localhost:8007/check_problem_solution"):
+    for payload in payloads:
+        try:
+            response = requests.post(url, json=payload.model_dump(), timeout=15000)
+            response.raise_for_status()
+            resp_json = response.json()
+            print(f"Response for example {payload.problem_id}: {resp_json['return_code']}, Score: {resp_json['score']}")
+        except Exception as e:
+            print(f"Request failed for example {payload.problem_id}: {e}, returning -1")
 
-    payload = process_jsonl_file(jsonl_path, 1)[0]
-
+def test_batch_examples(payloads, url="http://localhost:8007/batch_check_problem_solution"):
     try:
-        response = requests.post(url, json=payload.model_dump(), timeout=15000)
+        response = requests.post(url, json=[payload.model_dump() for payload in payloads], timeout=15000)
         response.raise_for_status()
         resp_json = response.json()
-        # return_code = resp_json.get("return_code", -2)
-        # if return_code != 0:
-        #     print(f"Request failed with return code {return_code} for example {payload.problem_id}")
-        # else:
-        #     print(f"Response succeeded with score {resp_json.get('score', -1.0)}")
+        for payload, result in zip(payloads, resp_json):
+            print(f"Response for example {payload.problem_id}: {result['return_code']}, Score: {result['score']}")
     except Exception as e:
-        print(f"Request failed for example {payload.problem_id}: {e}, returning -1")
+        print(f"Request failed for batch: {e}, returning -1")
+
+if __name__ == "__main__":
+    jsonl_path = os.path.join(test_kimina_MESSY.CURRENT_DIR, "lean-train-rl-data-Lean-Workbook.jsonl")
+
+    payloads = process_jsonl_file(jsonl_path, 50)[0:]
+    # test_single_examples(payloads)
+    test_batch_examples(payloads)
