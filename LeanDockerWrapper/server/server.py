@@ -7,6 +7,8 @@ import subprocess
 import time
 import uvicorn
 import requests
+from contextlib import asynccontextmanager
+import anyio
 
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PARENT_DIR = os.path.dirname(CURRENT_DIR)
@@ -16,8 +18,33 @@ from utils.proof_utils import analyze
 
 KIMINA_HOST = os.environ.get("KIMINA_HOST", "http://localhost:12332")
 KIMINA_CLIENT = None
+KIMINA_PROC = None
 
-app = FastAPI()
+@asynccontextmanager
+async def lifespan(app):
+    global KIMINA_CLIENT, KIMINA_PROC
+    # Start Kimina subprocess
+    KIMINA_PROC = subprocess.Popen(
+        ["python", "-m", "server"], 
+        cwd=os.path.join(PARENT_DIR, "kimina-lean-server"),
+        env=os.environ,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    # Wait for it to be ready (blocking)
+    KIMINA_CLIENT = await anyio.to_thread.run_sync(wait_for_kimina, KIMINA_HOST)
+    print("Kimina client ready.")
+
+    yield
+
+    # Cleanup on shutdown
+    print("Shutting down Kimina subprocess...")
+    KIMINA_PROC.terminate()
+    KIMINA_PROC.wait()
+    print("Kimina subprocess shut down.")
+
+app = FastAPI(lifespan=lifespan)
+
 
 class Payload(BaseModel):
     context: str
@@ -25,55 +52,54 @@ class Payload(BaseModel):
     answer: str
     problem_id: str
 
-def reconstruct_lean_executable(context, formal_statement, answer):
+def _reconstruct_lean_executable(context, formal_statement, answer):
     return f'{context}\n{formal_statement}\n{answer}'
 
+def _verify_kimina_requests(kimina_requests, timeout=30, batch_size=1):
+    num_proc = os.cpu_count() or 16
+    client = Lean4Client(base_url=KIMINA_HOST, disable_cache=True)
+    
+    result = batch_verify_proof(
+        samples=kimina_requests,
+        client=client,
+        timeout=timeout,
+        num_proc=num_proc,
+        batch_size=batch_size,
+    )
+    
+    return analyze(result)
+
 @app.post("/check_problem_solution")
-def check_solution(payload: Payload):
+def check_solution(json: Payload, timeout=30):
+    print("HERE")
     try:
-        kimina_request = [{
-            "custom_id": payload.problem_id,
-            "proof": reconstruct_lean_executable(payload.context, payload.formal_statement, payload.answer)
+        kimina_requests = [{
+            "custom_id": json.problem_id,
+            "proof": _reconstruct_lean_executable(json.context, json.formal_statement, json.answer)
         }]
-        start_time = time.time()
-        responses = client.verify(kimina_request, timeout=30)
-        elapsed_time = time.time() - start_time
-        print(f"Kimina response time: {elapsed_time:.2f} seconds")
+
+        print(kimina_requests)
+        print(KIMINA_CLIENT)
+
+        response = KIMINA_CLIENT.verify(kimina_requests, timeout=timeout)
+        print("RESPONSE", response)
 
         # "return_code": int,     # 0 if OK, -1 if timeout, -2 if unexpected server error. 
         # "score": float [0, 1],  # Reward between 0 and 1 inclusive 
         # "messages": list[str]   # Messages from the model (e.g. error messages.)
 
-        # if responses and responses[0].get("result") == "success":
-        #     return {"return_code": 0, "score": 1.0}
-        # else:
-        #     return {"return_code": 1, "score": 0.0}
-
     except Exception as e:
-        print(f"Kimina call failed: {e}")
-        return {"return_code": -2, "score": 0, "messages": [str(e)]}
+        raise RuntimeError(f"Kimina verification failed: {e}")
 
 @app.post("/batch_check_problem_solution")
-def batch_check_solution(payloads: List[Payload], timeout = 30, batch_size = 1):
+def batch_check_solution(payloads: List[Payload], timeout=30, batch_size=1):
     try:
         kimina_requests = [{
             "custom_id": payload.problem_id,
-            "proof": reconstruct_lean_executable(payload.context, payload.formal_statement, payload.answer)
+            "proof": _reconstruct_lean_executable(payload.context, payload.formal_statement, payload.answer)
         } for payload in payloads]
 
-        timeout = 30
-        batch_size = 1
-        num_proc = os.cpu_count() or 16
-        
-        result = batch_verify_proof(
-            samples=kimina_requests,
-            client=KIMINA_CLIENT,
-            timeout=timeout,
-            num_proc=num_proc,
-            batch_size=batch_size,
-        )
-
-        analyze(result)
+        return _verify_kimina_requests(kimina_requests, timeout, batch_size)
 
     except Exception as e:
         raise RuntimeError(f"Kimina batch verification failed: {e}")
@@ -104,24 +130,4 @@ def wait_for_kimina(host, timeout=30):
         raise RuntimeError(f"Kimina server failed to start with exception: {e}")
 
 if __name__ == "__main__":
-    kimina_proc = subprocess.Popen(
-        ["python", "-m", "server"], 
-        cwd=f"{PARENT_DIR}/kimina-lean-server",
-        env={**os.environ},
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
-    )
-
-    try:
-        # Wait until Kimina is ready
-        KIMINA_CLIENT = wait_for_kimina(KIMINA_HOST)
-
-        # Start your wrapper FastAPI server
-        uvicorn.run("server:app", host="localhost", port=8007, reload=False)
-
-    finally:
-        kimina_proc.terminate()
-        kimina_proc.wait()
-
-
-# docker run -p 8000:8000 --rm lean-server uvicorn server:app --host 0.0.0.0 --port 8000
+    uvicorn.run("server:app", host="localhost", port=8007, reload=False)
