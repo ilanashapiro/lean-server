@@ -49,9 +49,13 @@ def test_batch_examples(payloads, url="http://localhost:8007/batch_check_problem
         print(f"Request failed for batch: {e}, returning -1")
 
 if __name__ == "__main__":
-    jsonl_path = os.path.join(CURRENT_DIR, "wrapper_server/lean-test-data-Verina.jsonl")
-    jsonl_path = os.path.join(CURRENT_DIR, "wrapper_server/lean-train-rl-data-Lean-Workbook.jsonl")
+    # uncomment the file you want to test on. these are the splits that have ground truths, which is necessary to simulate testing
+    # jsonl_path = os.path.join(CURRENT_DIR, "wrapper_server/lean-test-data-Verina.jsonl")
+    # jsonl_path = os.path.join(CURRENT_DIR, "wrapper_server/lean-train-rl-data-Lean-Workbook.jsonl")
+    jsonl_path = os.path.join(CURRENT_DIR, "wrapper_server/lean-val-rl-data-Lean-Workbook.jsonl")
 
-    payloads = process_jsonl_file(jsonl_path, math.inf)[0:]
+    num_examples = 50
+    payloads = process_jsonl_file(jsonl_path, num_examples)
+
     test_single_examples(payloads)
-    # test_batch_examples(payloads)
+    test_batch_examples(payloads)
