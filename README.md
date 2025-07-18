@@ -1,5 +1,5 @@
 # Lean Server
-Lean 4 verification server based on [Kimina Lean Server][https://github.com/project-numina/kimina-lean-server]
+Lean 4 verification server based on [Kimina Lean Server](https://github.com/project-numina/kimina-lean-server)
 
 ## Generating SFT and RL annotated datasets
 You can run the `gen_rl.py` script to generate annotated RL data from [Lean-Workbook](https://huggingface.co/datasets/internlm/Lean-Workbook)/[Goedel LM](https://huggingface.co/datasets/Goedel-LM/Lean-workbook-proofs), [FVAPPS](https://huggingface.co/datasets/quinn-dougherty/fvapps), [Verina](https://huggingface.co/datasets/sunblaze-ucb/verina), and [MiniF2F](https://huggingface.co/datasets/Tonic/MiniF2F). 
