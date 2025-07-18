@@ -11,7 +11,7 @@ The resulting .jsonl files will all be saved to the root directory (you can the 
 
 ## Cloning the repo and its submodules
 ```
-git clone -b deepproof-full git@github.com:ilanashapiro/lean-server.git --recurse-submodules
+git clone git@github.com:ilanashapiro/lean-server.git --recurse-submodules
 ```
 
 ## Building the docker image
