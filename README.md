@@ -9,6 +9,11 @@ Some of the examples in Verina have ground truth, but most do not. FVAPPS and Mi
 
 The resulting .jsonl files will all be saved to the root directory (you can the SFT files and the unsplit FVAPPS/Lean Workbook files there. The latter 2 files are then further split into train and val). The splits used for RL train/val/test were manually moved inside wrapper_server so that they are baked into the Docker image and stored in the server's database.
 
+## Cloning the repo and its submodules
+```
+git clone -b deepproof-full git@github.com:ilanashapiro/lean-server.git --recurse-submodules
+```
+
 ## Building the docker image
 Please allow for ~10min to build the image.
 ```
