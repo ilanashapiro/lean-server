@@ -1,0 +1,111 @@
+2025-07-17 17:40:14.743 | INFO     | uvicorn.server:_serve:84 - Started server process [829]
+2025-07-17 17:40:14.743 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-17 17:40:15.080 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-17 17:40:15.144 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-17 17:40:15.281 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:34732 - "GET / HTTP/1.1" 200
+2025-07-17 17:40:15.300 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-17 17:40:16.295 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:34746 - "POST /verify HTTP/1.1" 200
+2025-07-17 17:40:24.409 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:55012 - "GET / HTTP/1.1" 200
+2025-07-17 17:40:24.757 | INFO     | server.server:_repl_creater:41 - Created 22 ['import Mathlib\nimport Aesop'] repls with response [{'env': 0, 'time': 9.172121524810791}, {'env': 0,
+2025-07-17 17:40:31.336 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | ae886774  
+2     | ['import Mathlib\nimport Aesop']              | 5107aa2f  
+3     | ['import Mathlib\nimport Aesop']              | 12abc1e2  
+4     | ['import Mathlib\nimport Aesop']              | 089670c8  
+5     | ['import Mathlib\nimport Aesop']              | 68b6252a  
+6     | ['import Mathlib\nimport Aesop']              | b4708141  
+7     | ['import Mathlib\nimport Aesop']              | e6dcde71  
+8     | ['import Mathlib\nimport Aesop']              | 91c6f289  
+9     | ['import Mathlib\nimport Aesop']              | 81fb7ec1  
+10    | ['import Mathlib\nimport Aesop']              | 7f05f6d7  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-17 17:40:32.755 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:36010 - "GET / HTTP/1.1" 200
+2025-07-17 17:40:46.337 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | ae886774  
+2     | ['import Mathlib\nimport Aesop']              | 5107aa2f  
+3     | ['import Mathlib\nimport Aesop']              | 12abc1e2  
+4     | ['import Mathlib\nimport Aesop']              | 089670c8  
+5     | ['import Mathlib\nimport Aesop']              | 68b6252a  
+6     | ['import Mathlib\nimport Aesop']              | b4708141  
+7     | ['import Mathlib\nimport Aesop']              | e6dcde71  
+8     | ['import Mathlib\nimport Aesop']              | 91c6f289  
+9     | ['import Mathlib\nimport Aesop']              | 81fb7ec1  
+10    | ['import Mathlib\nimport Aesop']              | 7f05f6d7  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-17 17:41:01.522 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53282 - "GET / HTTP/1.1" 200
+2025-07-17 17:41:02.730 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | ae886774  
+2     | ['import Mathlib\nimport Aesop']              | 5107aa2f  
+3     | ['import Mathlib\nimport Aesop']              | 12abc1e2  
+4     | ['import Mathlib\nimport Aesop']              | 089670c8  
+5     | ['import Mathlib\nimport Aesop']              | 68b6252a  
+6     | ['import Mathlib\nimport Aesop']              | b4708141  
+7     | ['import Mathlib\nimport Aesop']              | e6dcde71  
+8     | ['import Mathlib\nimport Aesop']              | 91c6f289  
+9     | ['import Mathlib\nimport Aesop']              | 81fb7ec1  
+10    | ['import Mathlib\nimport Aesop']              | 7f05f6d7  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-17 17:41:04.125 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-17 17:41:04.225 | INFO     | uvicorn.lifespan.on:shutdown:67 - Waiting for application shutdown.
+2025-07-17 17:41:04.228 | INFO     | uvicorn.lifespan.on:shutdown:76 - Application shutdown complete.
+2025-07-17 17:41:04.228 | INFO     | uvicorn.server:_serve:94 - Finished server process [829]

@@ -1,0 +1,233 @@
+2025-07-16 04:42:12.216 | INFO     | uvicorn.server:_serve:84 - Started server process [530]
+2025-07-16 04:42:12.217 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-16 04:42:12.566 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-16 04:42:12.709 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-16 04:42:13.586 | INFO     | server.server:_repl_creater:41 - Created 22 ['import Mathlib\nimport Aesop'] repls with response [{'env': 0, 'time': 0.7562386989593506}, {'env': 0
+2025-07-16 04:42:25.942 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 28947f49  
+2     | ['import Mathlib\nimport Aesop']              | 5d1c3b78  
+3     | ['import Mathlib\nimport Aesop']              | b62794a9  
+4     | ['import Mathlib\nimport Aesop']              | bbcf0547  
+5     | ['import Mathlib\nimport Aesop']              | 31492ad9  
+6     | ['import Mathlib\nimport Aesop']              | 5e6a16fb  
+7     | ['import Mathlib\nimport Aesop']              | ddb1499b  
+8     | ['import Mathlib\nimport Aesop']              | c4d30d2c  
+9     | ['import Mathlib\nimport Aesop']              | 5deb71d7  
+10    | ['import Mathlib\nimport Aesop']              | 1ced526f  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:42:40.945 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 28947f49  
+2     | ['import Mathlib\nimport Aesop']              | 5d1c3b78  
+3     | ['import Mathlib\nimport Aesop']              | b62794a9  
+4     | ['import Mathlib\nimport Aesop']              | bbcf0547  
+5     | ['import Mathlib\nimport Aesop']              | 31492ad9  
+6     | ['import Mathlib\nimport Aesop']              | 5e6a16fb  
+7     | ['import Mathlib\nimport Aesop']              | ddb1499b  
+8     | ['import Mathlib\nimport Aesop']              | c4d30d2c  
+9     | ['import Mathlib\nimport Aesop']              | 5deb71d7  
+10    | ['import Mathlib\nimport Aesop']              | 1ced526f  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:42:54.243 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 28947f49  
+2     | ['import Mathlib\nimport Aesop']              | 5d1c3b78  
+3     | ['import Mathlib\nimport Aesop']              | b62794a9  
+4     | ['import Mathlib\nimport Aesop']              | bbcf0547  
+5     | ['import Mathlib\nimport Aesop']              | 31492ad9  
+6     | ['import Mathlib\nimport Aesop']              | 5e6a16fb  
+7     | ['import Mathlib\nimport Aesop']              | ddb1499b  
+8     | ['import Mathlib\nimport Aesop']              | c4d30d2c  
+9     | ['import Mathlib\nimport Aesop']              | 5deb71d7  
+10    | ['import Mathlib\nimport Aesop']              | 1ced526f  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:43:09.246 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 28947f49  
+2     | ['import Mathlib\nimport Aesop']              | 5d1c3b78  
+3     | ['import Mathlib\nimport Aesop']              | b62794a9  
+4     | ['import Mathlib\nimport Aesop']              | bbcf0547  
+5     | ['import Mathlib\nimport Aesop']              | 31492ad9  
+6     | ['import Mathlib\nimport Aesop']              | 5e6a16fb  
+7     | ['import Mathlib\nimport Aesop']              | ddb1499b  
+8     | ['import Mathlib\nimport Aesop']              | c4d30d2c  
+9     | ['import Mathlib\nimport Aesop']              | 5deb71d7  
+10    | ['import Mathlib\nimport Aesop']              | 1ced526f  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:43:22.646 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 28947f49  
+2     | ['import Mathlib\nimport Aesop']              | 5d1c3b78  
+3     | ['import Mathlib\nimport Aesop']              | b62794a9  
+4     | ['import Mathlib\nimport Aesop']              | bbcf0547  
+5     | ['import Mathlib\nimport Aesop']              | 31492ad9  
+6     | ['import Mathlib\nimport Aesop']              | 5e6a16fb  
+7     | ['import Mathlib\nimport Aesop']              | ddb1499b  
+8     | ['import Mathlib\nimport Aesop']              | c4d30d2c  
+9     | ['import Mathlib\nimport Aesop']              | 5deb71d7  
+10    | ['import Mathlib\nimport Aesop']              | 1ced526f  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:43:37.651 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 28947f49  
+2     | ['import Mathlib\nimport Aesop']              | 5d1c3b78  
+3     | ['import Mathlib\nimport Aesop']              | b62794a9  
+4     | ['import Mathlib\nimport Aesop']              | bbcf0547  
+5     | ['import Mathlib\nimport Aesop']              | 31492ad9  
+6     | ['import Mathlib\nimport Aesop']              | 5e6a16fb  
+7     | ['import Mathlib\nimport Aesop']              | ddb1499b  
+8     | ['import Mathlib\nimport Aesop']              | c4d30d2c  
+9     | ['import Mathlib\nimport Aesop']              | 5deb71d7  
+10    | ['import Mathlib\nimport Aesop']              | 1ced526f  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:43:50.982 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 28947f49  
+2     | ['import Mathlib\nimport Aesop']              | 5d1c3b78  
+3     | ['import Mathlib\nimport Aesop']              | b62794a9  
+4     | ['import Mathlib\nimport Aesop']              | bbcf0547  
+5     | ['import Mathlib\nimport Aesop']              | 31492ad9  
+6     | ['import Mathlib\nimport Aesop']              | 5e6a16fb  
+7     | ['import Mathlib\nimport Aesop']              | ddb1499b  
+8     | ['import Mathlib\nimport Aesop']              | c4d30d2c  
+9     | ['import Mathlib\nimport Aesop']              | 5deb71d7  
+10    | ['import Mathlib\nimport Aesop']              | 1ced526f  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:44:00.619 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-16 04:44:00.727 | INFO     | uvicorn.lifespan.on:shutdown:67 - Waiting for application shutdown.
+2025-07-16 04:44:00.732 | INFO     | uvicorn.lifespan.on:shutdown:76 - Application shutdown complete.
+2025-07-16 04:44:00.733 | INFO     | uvicorn.server:_serve:94 - Finished server process [530]

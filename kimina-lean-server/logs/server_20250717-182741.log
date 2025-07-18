@@ -1,0 +1,27 @@
+2025-07-17 18:27:41.037 | INFO     | uvicorn.server:_serve:84 - Started server process [15250]
+2025-07-17 18:27:41.037 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-17 18:27:41.038 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-17 18:27:41.039 | ERROR    | uvicorn.server:startup:172 - [Errno 98] error while attempting to bind on address ('0.0.0.0', 12332): address already in use
+2025-07-17 18:27:41.039 | INFO     | uvicorn.lifespan.on:shutdown:67 - Waiting for application shutdown.
+2025-07-17 18:27:41.041 | ERROR    | uvicorn.lifespan.on:send:134 - Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/usr/local/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 134, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "/usr/local/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/app/kimina-lean-server/server/server.py", line 99, in lifespan
+    await task
+  File "/app/kimina-lean-server/server/server.py", line 31, in _repl_creater
+    for header, amount in tqdm(repl_to_create.items(), desc="Creating REPLs"):
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/tqdm/std.py", line 1096, in __init__
+    self.sp = self.status_printer(self.fp)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/tqdm/std.py", line 448, in status_printer
+    getattr(sys.stderr, 'flush', lambda: None)()
+BrokenPipeError: [Errno 32] Broken pipe
+
+2025-07-17 18:27:41.041 | ERROR    | uvicorn.lifespan.on:shutdown:73 - Application shutdown failed. Exiting.

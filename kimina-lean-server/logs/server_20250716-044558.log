@@ -1,0 +1,43 @@
+2025-07-16 04:45:58.165 | INFO     | uvicorn.server:_serve:84 - Started server process [13]
+2025-07-16 04:45:58.166 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-16 04:45:58.641 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-16 04:45:58.789 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-16 04:45:59.838 | INFO     | server.server:_repl_creater:41 - Created 22 ['import Mathlib\nimport Aesop'] repls with response [{'env': 0, 'time': 0.9172852039337158}, {'env': 0
+2025-07-16 04:46:07.584 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 300}
+2025-07-16 04:46:08.258 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37194 - "POST /verify HTTP/1.1" 200
+2025-07-16 04:46:11.947 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | a000067b  
+2     | ['import Mathlib\nimport Aesop']              | 6ee8bfd6  
+3     | ['import Mathlib\nimport Aesop']              | 6d41f2bb  
+4     | ['import Mathlib\nimport Aesop']              | a1baaab9  
+5     | ['import Mathlib\nimport Aesop']              | 1e5ea994  
+6     | ['import Mathlib\nimport Aesop']              | 9732949e  
+7     | ['import Mathlib\nimport Aesop']              | 08af5799  
+8     | ['import Mathlib\nimport Aesop']              | 7f50901d  
+9     | ['import Mathlib\nimport Aesop']              | a03090ea  
+10    | ['import Mathlib\nimport Aesop']              | d620b7ca  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:46:15.385 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-16 04:46:15.487 | INFO     | uvicorn.lifespan.on:shutdown:67 - Waiting for application shutdown.
+2025-07-16 04:46:15.494 | INFO     | uvicorn.lifespan.on:shutdown:76 - Application shutdown complete.
+2025-07-16 04:46:15.494 | INFO     | uvicorn.server:_serve:94 - Finished server process [13]

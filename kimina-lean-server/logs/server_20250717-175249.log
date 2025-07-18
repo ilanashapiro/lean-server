@@ -1,0 +1,46 @@
+2025-07-17 17:52:49.570 | INFO     | uvicorn.server:_serve:84 - Started server process [8672]
+2025-07-17 17:52:49.570 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-17 17:52:49.768 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-17 17:52:49.857 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-17 17:52:50.099 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:56310 - "GET / HTTP/1.1" 200
+2025-07-17 17:52:50.109 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-17 17:52:51.099 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:56318 - "POST /verify HTTP/1.1" 200
+2025-07-17 17:52:57.789 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-17 17:52:57.890 | INFO     | uvicorn.server:_serve:94 - Finished server process [8672]
+2025-07-17 17:52:59.428 | ERROR    | uvicorn.lifespan.on:send:134 - Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+  File "/usr/local/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 70, in serve
+    with self.capture_signals():
+  File "/usr/local/lib/python3.11/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 331, in capture_signals
+    signal.raise_signal(captured_signal)
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 701, in lifespan
+    await receive()
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+

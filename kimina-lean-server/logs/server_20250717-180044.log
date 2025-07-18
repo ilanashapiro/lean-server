@@ -1,0 +1,114 @@
+2025-07-17 18:00:44.371 | INFO     | uvicorn.server:_serve:84 - Started server process [11080]
+2025-07-17 18:00:44.371 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-17 18:00:44.596 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-17 18:00:44.690 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-17 18:00:44.906 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53310 - "GET / HTTP/1.1" 200
+2025-07-17 18:00:44.916 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-17 18:00:45.997 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53320 - "POST /verify HTTP/1.1" 200
+2025-07-17 18:00:52.333 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53330 - "GET / HTTP/1.1" 200
+2025-07-17 18:00:52.352 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10000] Processing code: {"custom_id": "lean_workbook_plus_10000", "proof_header": "", "proof_body": "ring_nf\n  nlinarith [sq_nonneg (a + b + c), sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a)]", "timeout": 30}
+2025-07-17 18:00:52.935 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53346 - "POST /verify HTTP/1.1" 200
+2025-07-17 18:00:54.315 | INFO     | server.server:_repl_creater:41 - Created 22 ['import Mathlib\nimport Aesop'] repls with response [{'env': 0, 'time': 9.622599840164185}, {'env': 0,
+2025-07-17 18:01:01.162 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | ccfa2ca2  
+2     | ['import Mathlib\nimport Aesop']              | d2637f7d  
+3     | ['import Mathlib\nimport Aesop']              | ae03704b  
+4     | ['import Mathlib\nimport Aesop']              | e25998d4  
+5     | ['import Mathlib\nimport Aesop']              | ef8f3972  
+6     | ['import Mathlib\nimport Aesop']              | 66406a9c  
+7     | ['import Mathlib\nimport Aesop']              | 80051ecd  
+8     | ['import Mathlib\nimport Aesop']              | d6641809  
+9     | ['import Mathlib\nimport Aesop']              | 1c79fab0  
+10    | ['import Mathlib\nimport Aesop']              | 7f1443b6  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-17 18:01:16.112 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-17 18:01:16.163 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | ccfa2ca2  
+2     | ['import Mathlib\nimport Aesop']              | d2637f7d  
+3     | ['import Mathlib\nimport Aesop']              | ae03704b  
+4     | ['import Mathlib\nimport Aesop']              | e25998d4  
+5     | ['import Mathlib\nimport Aesop']              | ef8f3972  
+6     | ['import Mathlib\nimport Aesop']              | 66406a9c  
+7     | ['import Mathlib\nimport Aesop']              | 80051ecd  
+8     | ['import Mathlib\nimport Aesop']              | d6641809  
+9     | ['import Mathlib\nimport Aesop']              | 1c79fab0  
+10    | ['import Mathlib\nimport Aesop']              | 7f1443b6  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-17 18:01:16.214 | INFO     | uvicorn.server:_serve:94 - Finished server process [11080]
+2025-07-17 18:01:16.220 | ERROR    | uvicorn.lifespan.on:send:134 - Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           ^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+  File "/usr/local/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 70, in serve
+    with self.capture_signals():
+  File "/usr/local/lib/python3.11/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 331, in capture_signals
+    signal.raise_signal(captured_signal)
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 157, in _on_sigint
+    raise KeyboardInterrupt()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 701, in lifespan
+    await receive()
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/lifespan/on.py", line 137, in receive
+    return await self.receive_queue.get()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/asyncio/queues.py", line 158, in get
+    await getter
+asyncio.exceptions.CancelledError
+

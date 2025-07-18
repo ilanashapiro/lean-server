@@ -1,0 +1,101 @@
+2025-07-16 04:04:28.818 | INFO     | uvicorn.server:_serve:84 - Started server process [13]
+2025-07-16 04:04:28.819 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-16 04:04:28.841 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-16 04:04:28.842 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-16 04:04:30.787 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:49790 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:31.798 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:49804 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:32.809 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:49806 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:33.819 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:49816 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:34.828 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:49830 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:35.630 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:49840 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:35.635 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37100 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:36.645 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37104 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:37.655 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37116 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:38.662 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37118 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:39.672 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37126 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:40.681 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37132 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:41.695 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37138 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:42.628 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:04:42.710 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37154 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:43.722 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37156 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:44.732 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:37170 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:45.747 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60792 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:46.785 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60800 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:47.795 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60802 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:48.802 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60804 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:49.811 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60814 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:50.822 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60828 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:51.842 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60830 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:52.853 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60834 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:53.887 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60850 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:54.941 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:60862 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:55.951 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:33578 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:56.961 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:33590 - "GET / HTTP/1.1" 200
+2025-07-16 04:04:57.630 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:04:57.970 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-16 04:04:58.072 | INFO     | uvicorn.lifespan.on:shutdown:67 - Waiting for application shutdown.
+2025-07-16 04:04:58.092 | ERROR    | uvicorn.lifespan.on:send:134 - Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/usr/local/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 134, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "/usr/local/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 99, in lifespan
+    await task
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 36, in _repl_creater
+    repl = LeanREPL()
+           ^^^^^^^^^^
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 35, in __init__
+    self.start_process()
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 150, in start_process
+    self.process = subprocess.Popen(
+                   ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'lake'
+
+2025-07-16 04:04:58.092 | ERROR    | uvicorn.lifespan.on:shutdown:73 - Application shutdown failed. Exiting.
+2025-07-16 04:04:58.092 | INFO     | uvicorn.server:_serve:94 - Finished server process [13]

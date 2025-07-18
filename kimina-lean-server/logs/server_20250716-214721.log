@@ -1,0 +1,433 @@
+2025-07-16 21:47:21.344 | INFO     | uvicorn.server:_serve:84 - Started server process [1607]
+2025-07-16 21:47:21.344 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-16 21:47:21.673 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-16 21:47:21.776 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-16 21:47:23.788 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54452 - "GET / HTTP/1.1" 200
+2025-07-16 21:47:23.810 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-16 21:47:25.329 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54464 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:27.111 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54476 - "GET / HTTP/1.1" 200
+2025-07-16 21:47:27.474 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10394] Processing code: {"custom_id": "lean_workbook_plus_10394", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10394 (a b : \u211d) : a^2 + b^2 \u2265 (a + b)^2 / 2   :=  by\n  \n  have h\u2080 : (a - b)^2 \u2265 0 := by nlinarith\n  linarith\n  <;> nlinarith", "timeout": 30}
+2025-07-16 21:47:27.597 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10229] Processing code: {"custom_id": "lean_workbook_plus_10229", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10229 (a b c d e : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) (he : 0 < e) : 4 * (a ^ 2 + b ^ 2 + c ^ 2 + d ^ 2 + e ^ 2) \u2265 2 * (a * b + a * c + b * c + b * d + c * d + c * e + d * e + d * a + e * a + e * b)   :=  by\n  \n  linarith [sq_nonneg (a - b), sq_nonneg (a - c), sq_nonneg (a - d), sq_nonneg (a - e),\n    sq_nonneg (b - c), sq_nonneg (b - d), sq_nonneg (b - e), sq_nonneg (c - d),\n    sq_nonneg (c - e), sq_nonneg (d - e)]", "timeout": 30}
+2025-07-16 21:47:27.647 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10079] Processing code: {"custom_id": "lean_workbook_plus_10079", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10079 (x : \u211d) : 1 / Real.sqrt 10 = Real.sqrt 10 / 10   :=  by\n  \n  field_simp [Real.sqrt_ne_zero]\n  <;> ring_nf\n  <;> norm_num [Real.sqrt_eq_zero]\n  <;> norm_num [Real.sqrt_eq_zero]\n  <;> norm_num [Real.sqrt_eq_zero]\n  <;> norm_num [Real.sqrt_eq_zero]", "timeout": 30}
+2025-07-16 21:47:27.704 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10305] Processing code: {"custom_id": "lean_workbook_plus_10305", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10305 (f : \u211d \u2192 \u211d) (hf: f = fun x \u21a6 x) : \u2200 x y, f (x + y - f (x*y)) = f (1 - x) * f y + f x   :=  by\n  \n  intro x y\n  simp only [hf]\n  ring", "timeout": 30}
+2025-07-16 21:47:27.760 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10183] Processing code: {"custom_id": "lean_workbook_plus_10183", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10183 : \u2200 y : \u2124, y % 4 = 3 \u2192 (y^3 + 27) % 4 = 2   :=  by\n  \n  intro y h\n  rw [pow_three]\n  norm_num [Int.add_emod, Int.mul_emod, h, Int.emod_emod]\n  <;> ring_nf\n  <;> omega", "timeout": 30}
+2025-07-16 21:47:27.825 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10076] Processing code: {"custom_id": "lean_workbook_plus_10076", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10076 (x : \u211d) (hx : 0 < x) : x ^ 6 + 2 - (x ^ 3 + x ^ 2 + x) \u2265 0   :=  by\n  \n  nlinarith [sq_nonneg (x ^ 3 - 1), sq_nonneg (x ^ 2 - 1), sq_nonneg (x - 1),\n    sq_nonneg (x ^ 2 - x), sq_nonneg (x ^ 3 - x), sq_nonneg (x ^ 2 - 2 * x),\n    sq_nonneg (x - 2 * x), sq_nonneg (x ^ 3 - 2 * x), sq_nonneg (x ^ 2 - 3 * x),\n    sq_nonneg (x - 3 * x), sq_nonneg (x ^ 3 - 3 * x)]", "timeout": 30}
+2025-07-16 21:47:27.907 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10404] Processing code: {"custom_id": "lean_workbook_plus_10404", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10404 (n : \u2115) (x y : \u211d) : (x + y) ^ n = \u2211 k in Finset.range (n + 1), (n.choose k) * x ^ (n - k) * y ^ k   :=  by\n  \n  rw [add_comm] -- Rewrite (x + y)^n as (y + x)^n to align with the standard form of the binomial theorem\n  simp [add_pow, Finset.sum_range_succ, mul_comm, mul_assoc, mul_left_comm]\n  <;> rfl", "timeout": 30}
+2025-07-16 21:47:27.955 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10232] Processing code: {"custom_id": "lean_workbook_plus_10232", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10232 (a b c d : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hd : 0 < d) : (a * c / (a + c) + b * d / (b + d)) \u2264 (a + b) * (c + d) / (a + b + c + d)   :=  by\n  \n  have h\u2080 : 0 < a + b := by linarith\n  have h\u2081 : 0 < c + d := by linarith\n  have h\u2082 : 0 < a + b + c + d := by linarith\n  field_simp\n  rw [div_le_div_iff (by positivity) (by positivity)]\n  ring_nf\n  nlinarith [sq_nonneg (a * d - b * c), sq_nonneg (a * b - c * d)]", "timeout": 30}
+2025-07-16 21:47:28.021 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10056] Processing code: {"custom_id": "lean_workbook_plus_10056", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10056 (n s : \u2115) : (s * (n + 1) - n) ^ 2 \u2265 0   :=  by\n  \n  nlinarith\n  <;> apply sq_nonneg\n  <;> apply sq_nonneg", "timeout": 30}
+2025-07-16 21:47:28.088 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_1031] Processing code: {"custom_id": "lean_workbook_plus_1031", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_1031 (x : \u211d) (hx : x > 0) : x + 1 / x \u2265 2   :=  by\n  \n  have hx' : x \u2260 0 := by linarith\n  field_simp [hx']\n  rw [le_div_iff hx]\n  nlinarith [sq_nonneg (x - 1)]", "timeout": 30}
+2025-07-16 21:47:28.193 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10412] Processing code: {"custom_id": "lean_workbook_plus_10412", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10412 (k : \u2115) (h : 1 \u2264 k) : 2 ^ (k - 1) \u2265 k   :=  by\n  \n  induction' h with k h IH\n  simp\n  cases k with\n  | zero => contradiction -- This case is not possible since h : 1 \u2264 k\n  | succ k' =>\n    simp_all [Nat.pow_succ, Nat.mul_succ]\n    nlinarith", "timeout": 30}
+2025-07-16 21:47:28.269 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_1002] Processing code: {"custom_id": "lean_workbook_plus_1002", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_1002 (a b c d : \u211d) (hb : 0 < b) (hd : 0 < d) (h : a / b < c / d) : a / b < (a + c) / (b + d) \u2227 (a + c) / (b + d) < c / d   :=  by\n  \n  constructor\n  case left =>\n    rw [div_lt_div_iff (by linarith) (by linarith)] at h \u22a2\n    linarith\n  case right =>\n    rw [div_lt_div_iff (by linarith) (by linarith)] at h \u22a2\n    linarith", "timeout": 30}
+2025-07-16 21:47:28.335 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_1020] Processing code: {"custom_id": "lean_workbook_plus_1020", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_1020 (X Y Z : \u2115) (h\u2081 : X % Y = Z % Y) : X \u2261 Z [MOD Y]   :=  by\n  \n  exact h\u2081", "timeout": 30}
+2025-07-16 21:47:28.377 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10240] Processing code: {"custom_id": "lean_workbook_plus_10240", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10240 (x y z : \u211d) : x ^ 4 + y ^ 4 + z ^ 4 + x * y * z * (x + y + z) \u2265 x ^ 3 * y + y ^ 3 * z + z ^ 3 * x + x * y ^ 3 + y * z ^ 3 + z * x ^ 3   :=  by\n  \n  simp_all only [add_assoc, add_left_comm, add_right_comm, mul_assoc, mul_left_comm, mul_right_comm]\n  nlinarith [sq_nonneg (x - y), sq_nonneg (y - z), sq_nonneg (z - x), sq_nonneg (x + y), sq_nonneg (y + z), sq_nonneg (z + x),\n    sq_nonneg (x - y + z), sq_nonneg (y - z + x), sq_nonneg (z - x + y)]", "timeout": 30}
+2025-07-16 21:47:28.436 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10318] Processing code: {"custom_id": "lean_workbook_plus_10318", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10318 {a b c : \u211d} : (1 / Real.sqrt 3 ^ 2 + 1 / Real.sqrt 3 ^ 2 + 1 / Real.sqrt 3 ^ 2) * ((3 - a) ^ 2 + (3 - b) ^ 2 + (3 - c) ^ 2) \u2265 (1 / Real.sqrt 3 * (3 - a) + 1 / Real.sqrt 3 * (3 - b) + 1 / Real.sqrt 3 * (3 - c)) ^ 2   :=  by\n  \n  ring_nf\n  nlinarith [sq_nonneg (a + b + c), sq_nonneg (a - b), sq_nonneg (a - c), sq_nonneg (b - c)]", "timeout": 30}
+2025-07-16 21:47:28.543 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10050] Processing code: {"custom_id": "lean_workbook_plus_10050", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10050 (a b c x y z : \u211d) : (a^2+b^2+c^2)*(x^2+y^2+z^2) \u2265 (a*x+b*y+c*z)^2   :=  by\n  \n  nlinarith [sq_nonneg (a*x + b*y + c*z), sq_nonneg (a*y - b*x), sq_nonneg (a*z - c*x),\n    sq_nonneg (b*z - c*y), sq_nonneg (c*x - a*z), sq_nonneg (c*y - b*z),\n    sq_nonneg (a*x - b*y), sq_nonneg (b*y - c*z), sq_nonneg (c*z - a*x),\n    sq_nonneg (a*y + b*x), sq_nonneg (b*z + c*y), sq_nonneg (c*x + a*z)]", "timeout": 30}
+2025-07-16 21:47:28.747 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10244] Processing code: {"custom_id": "lean_workbook_plus_10244", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10244 (x : \u211d) (hx: x = 8^85): x > 5^100 \u2227 x > 6^95 \u2227 x > 7^90   :=  by\n  \n  constructor\n  norm_num [hx]\n  constructor\n  norm_num [hx]\n  norm_num [hx]", "timeout": 30}
+2025-07-16 21:47:28.851 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10203] Processing code: {"custom_id": "lean_workbook_plus_10203", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10203 (r : \u2115) : choose (r + 1) 2 + choose (r + 1) 3 = choose (r + 2) 3   :=  by\n  \n  rw [choose_succ_succ]\n  simp [choose_succ_succ, add_comm, add_assoc, add_left_comm]", "timeout": 30}
+2025-07-16 21:47:29.033 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10063] Processing code: {"custom_id": "lean_workbook_plus_10063", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10063 : \u2200 a b c : \u211d, (b - a) ^ 2 + (c - b) ^ 2 + (a - c) ^ 2 \u2264 3 * (a ^ 2 + b ^ 2 + c ^ 2)   :=  by\n  \n  intro a b c\n  ring_nf\n  nlinarith [sq_nonneg (a + b + c), sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a)]", "timeout": 30}
+2025-07-16 21:47:29.080 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10058] Processing code: {"custom_id": "lean_workbook_plus_10058", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10058 (E : Type) (A B C D : Set E) (h1 : A \u2286 B) (h2 : C \u2286 D) :\n  A \u2229 C \u2286 B \u2229 D   :=  by\n  \n  intro x hx\n  simp_all [Set.mem_inter_iff]\n  <;> aesop", "timeout": 30}
+2025-07-16 21:47:29.165 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10419] Processing code: {"custom_id": "lean_workbook_plus_10419", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10419 (a b c : \u211a) (ha : a + b + c = 1) (hb : a^2 + b^2 + c^2 = 1) : \u2203 a b c : \u211a, a + b + c = 1 \u2227 a^2 + b^2 + c^2 = 1   :=  by\n  \n  exact \u27e8a, b, c, ha, hb\u27e9", "timeout": 30}
+2025-07-16 21:47:29.259 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10162] Processing code: {"custom_id": "lean_workbook_plus_10162", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10162 : \u2200 n, \u2211 i in Finset.range (n+1), i^2 = n * (n + 1) * (2 * n + 1) / 6   :=  by\n  \n  intro n\n  induction n with\n  | zero =>\n    simp\n  | succ n ihn =>\n    simp_all [Finset.sum_range_succ, Nat.succ_eq_add_one, Nat.add_assoc]\n    ring_nf\n    omega", "timeout": 30}
+2025-07-16 21:47:36.673 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 22        
+      | Cache ratio                                   | 0.00      
+      | its                                           | 1.4666666666666666
+=================================================================
+2025-07-16 21:47:37.202 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54556 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:37.236 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10069] Processing code: {"custom_id": "lean_workbook_plus_10069", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10069 : (2 + 2 * 1) * (1 + 2 * 1 / 2) * (2 * 1 / 2 + 1) = 16   :=  by\n  \n  norm_num", "timeout": 30}
+2025-07-16 21:47:37.357 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53028 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:37.371 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10000] Processing code: {"custom_id": "lean_workbook_plus_10000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10000 (a b c : \u211d) : (a^2 + 4 * b * c)^(1 / 3) + (b^2 + 4 * a * c)^(1 / 3) + (c^2 + 4 * a * b)^(1 / 3) \u2265 (45 * (a * b + a * c + b * c))^(1 / 3)   :=  by\n  \n  ring_nf\n  nlinarith [sq_nonneg (a + b + c), sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a)]", "timeout": 30}
+2025-07-16 21:47:37.947 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54530 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:38.066 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10346] Processing code: {"custom_id": "lean_workbook_plus_10346", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10346  (n : \u2115)\n  (h\u2080 : 0 < n)\n  (h\u2081 : 2\u2223n)\n  (h\u2082 : 5\u2223n)\n  (h\u2083 : \u2203! p, Nat.Prime p \u2227 p \u2223 n) :\n  n = 2 * 5 * 3^3   :=  by\n  \n  obtain \u27e8p, hp, hnp\u27e9 := h\u2083\n  have h\u2084 := hnp 2\n  have h\u2085 := hnp 5\n  have h\u2086 := hnp p\n  simp at h\u2084 h\u2085 h\u2086\n  norm_num at h\u2080 h\u2081 h\u2082 h\u2084 h\u2085 h\u2086\n  omega", "timeout": 30}
+2025-07-16 21:47:38.364 | INFO     | server.server:_repl_creater:41 - Created 22 ['import Mathlib\nimport Aesop'] repls with response [{'env': 0, 'time': 11.928099632263184}, {'env': 0
+2025-07-16 21:47:38.369 | INFO     | utils.repl_cache:evict_if_needed:72 - Failed to evict header ['import Mathlib\nimport Aesop with id 20d05464-a6e3-43d3-9d28-95ca9517f4ee, putting it back
+2025-07-16 21:47:38.369 | INFO     | utils.repl_cache:evict_if_needed:72 - Failed to evict header ['import Mathlib\nimport Aesop with id 464ffb89-487d-4b89-9e16-b58b3cdcb280, putting it back
+2025-07-16 21:47:38.369 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id d6c49578-61f5-4d28-8dff-52574e0cff4e
+2025-07-16 21:47:38.370 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id cae01974-8845-4795-ba06-dcd34b790118
+2025-07-16 21:47:38.567 | INFO     | server.server:_repl_cleaner:62 - Closed d6c49578-61f5-4d28-8dff-52574e0cff4e repl
+2025-07-16 21:47:38.640 | INFO     | server.server:_repl_cleaner:62 - Closed cae01974-8845-4795-ba06-dcd34b790118 repl
+2025-07-16 21:47:38.811 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53030 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:38.850 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10217] Processing code: {"custom_id": "lean_workbook_plus_10217", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10217 : (4:\u211d)^(1/3) > 2/3   :=  by\n  \n  norm_num [show (4:\u211d) = 2 ^ 2 by norm_num]\n  <;> simp [pow_one]\n  <;> norm_num\n  <;> linarith\n  <;> norm_num\n  <;> linarith\n  <;> norm_num\n  <;> linarith", "timeout": 30}
+2025-07-16 21:47:39.085 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53044 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:39.102 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10148] Processing code: {"custom_id": "lean_workbook_plus_10148", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10148 (a b : \u211d) (ha : 0 < a) (hb : 0 < b) : 2 * (a^8 + b^8) \u2265 (a^3 + b^3) * (a^5 + b^5)   :=  by\n  \n  nlinarith [sq_nonneg (a^4 - b^4), sq_nonneg (a^2 - b^2), sq_nonneg (a^3 - b^3), sq_nonneg (a^5 - b^5),\n    sq_nonneg (a^4 - b^4), sq_nonneg (a^2 - b^2), sq_nonneg (a^3 - b^3), sq_nonneg (a^5 - b^5),\n    sq_nonneg (a^4 - b^4), sq_nonneg (a^2 - b^2), sq_nonneg (a^3 - b^3), sq_nonneg (a^5 - b^5)]", "timeout": 30}
+2025-07-16 21:47:39.571 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54572 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:39.581 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53038 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:39.598 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10446] Processing code: {"custom_id": "lean_workbook_plus_10446", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10446 : 10 * x + (71 - x) * (5 - x) + 2 * x ^ 2 + 8 \u2265 0 \u2194 3 * (x - 11) ^ 2 \u2265 0   :=  by\n  \n  constructor <;> intro <;>\n    nlinarith [sq_nonneg (x - 11), sq_nonneg (x - 5), sq_nonneg (x - 71), sq_nonneg (x - 10)]", "timeout": 30}
+2025-07-16 21:47:39.613 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10262] Processing code: {"custom_id": "lean_workbook_plus_10262", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10262 (x y z : \u211d) (hx : 0 < x) (hy : 0 < y) (hz : 0 < z) (h : x * y * z = 1) : (x ^ 2 * (2 * y - 1) ^ 2 + y ^ 2 * (2 * z - 1) ^ 2 + z ^ 2 * (2 * x - 1) ^ 2) + 5 - (1 + x) * (1 + y) * (1 + z) - 3 * (1 - x) * (1 - y) * (1 - z) = (2 * x * y - x - 1) ^ 2 + (2 * y * z - y - 1) ^ 2 + (2 * z * x - z - 1) ^ 2   :=  by\n  \n  ring_nf\n  nlinarith [mul_pos hx hy, mul_pos hy hz, mul_pos hz hx, h, sq_nonneg (x + y + z), sq_nonneg (x - y), sq_nonneg (y - z), sq_nonneg (z - x)]", "timeout": 30}
+2025-07-16 21:47:39.867 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54516 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:39.887 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_1017] Processing code: {"custom_id": "lean_workbook_plus_1017", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_1017 : 2 % 2 = 0   :=  by\n  \n  norm_num", "timeout": 30}
+2025-07-16 21:47:39.932 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53090 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:39.955 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10087] Processing code: {"custom_id": "lean_workbook_plus_10087", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10087 (f : \u2115 \u2192 \u2115) (hf: f 0 = 1) (hf2 : \u2200 n, f (n + 1) = f n - 1) : \u2200 n, f n = 1 - n   :=  by\n  \n  intro n; induction n with\n  | zero =>\n    simp_all\n  | succ n ih =>\n    simp_all only [hf2, Nat.succ_eq_add_one, Nat.zero_eq]\n    omega", "timeout": 30}
+2025-07-16 21:47:40.104 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53102 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:40.147 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10007] Processing code: {"custom_id": "lean_workbook_plus_10007", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10007 : \u2200 n : \u2115, \u2211 k in Finset.range (n+1), (Nat.choose n k) = 2^n   :=  by\n  \n  intro n\n  simp [sum_range_choose]\n  <;> rfl", "timeout": 30}
+2025-07-16 21:47:40.239 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53106 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:40.245 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10366] Processing code: {"custom_id": "lean_workbook_plus_10366", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10366 (a b : \u211d) (ha : a \u2265 0 \u2227 b \u2265 0 \u2227 a + b = 2) : a^4 + b^4 \u2265 2   :=  by\n  \n  ring_nf\n  nlinarith [sq_nonneg (a - 1), sq_nonneg (b - 1), sq_nonneg (a + b), ha.1, ha.2.1, ha.2.2,\n    sq_nonneg (a - b)]", "timeout": 30}
+2025-07-16 21:47:40.389 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54580 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:40.404 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10224] Processing code: {"custom_id": "lean_workbook_plus_10224", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10224 (x y : \u211d) : 1 + x^2 + y^2 + 2 * x * y \u2264 (4:\u211d) / 3 * (1 + x^2) * (1 + y^2)   :=  by\n  \n  nlinarith [sq_nonneg (x - y), sq_nonneg (x + y), sq_nonneg (2 * x * y - 1), sq_nonneg (2 * x * y + 1),\n    sq_nonneg (x * y - 1), sq_nonneg (x * y + 1), sq_nonneg (x - y + 1), sq_nonneg (x + y - 1)]", "timeout": 30}
+2025-07-16 21:47:40.422 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54492 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:40.434 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10151] Processing code: {"custom_id": "lean_workbook_plus_10151", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10151 (a b c : \u211d) (h1 : a + b + c = 0) (h2 : a^3 + b^3 + c^3 = 0) : a * b * c = 0   :=  by\n  \n  have h3 : c = -a - b := by linarith\n  rw [h3] at h2 \u22a2\n  ring_nf at h2 \u22a2\n  nlinarith", "timeout": 30}
+2025-07-16 21:47:41.148 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54596 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:41.160 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10448] Processing code: {"custom_id": "lean_workbook_plus_10448", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10448 (a b c : \u211d) (h\u2081 : 0 < a \u2227 a \u2264 b \u2227 b \u2264 c) :\n  c - a \u2265 0 \u2227 c - b \u2265 0 \u2227 b - a \u2265 0   :=  by\n  \n  refine' \u27e8_, _, _\u27e9\n  <;> nlinarith\n  <;> nlinarith\n  <;> nlinarith\n  <;> nlinarith", "timeout": 30}
+2025-07-16 21:47:41.376 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54540 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:41.389 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10287] Processing code: {"custom_id": "lean_workbook_plus_10287", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10287 : \u2203 n, (1 \u2264 n \u2227 n \u2264 2014 \u2227 \u2203 k : \u2124, 8 * n = k * (9999 - n))   :=  by\n  \n  use 1111\n  exact \u27e8by norm_num, by norm_num, \u27e81, by norm_num\u27e9\u27e9", "timeout": 30}
+2025-07-16 21:47:41.430 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54508 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:41.438 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10171] Processing code: {"custom_id": "lean_workbook_plus_10171", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10171 (x : \u2115) (h1 : x \u2261 1 [ZMOD 2]) (h2 : x \u2261 2 [ZMOD 3]) (h3 : x \u2261 3 [ZMOD 4]) (h4 : x \u2261 4 [ZMOD 5]) : x >= 59   :=  by\n  \n  norm_num [Int.ModEq, Int.ModEq] at h1 h2 h3 h4\n  omega", "timeout": 30}
+2025-07-16 21:47:41.452 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53144 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:41.457 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10109] Processing code: {"custom_id": "lean_workbook_plus_10109", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10109 (a b : \u211d) (ha : 0 < a) (hb : 0 < b) (hab : a + b^2 = 1) : a * b + 2 * a + 3 * b \u2264 94 / 27   :=  by\n  \n  nlinarith [sq_nonneg (b - 1 / 3), sq_nonneg (b - 2 / 3), hab, mul_self_nonneg (b - 1 / 3 + 1 / 3), mul_self_nonneg (b - 1 / 3 - 1 / 3), mul_self_nonneg (b - 2 / 3 + 1 / 3), mul_self_nonneg (b - 2 / 3 - 1 / 3)]", "timeout": 30}
+2025-07-16 21:47:41.585 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53130 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:41.600 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10372] Processing code: {"custom_id": "lean_workbook_plus_10372", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10372 (f : \u211d \u2192 \u211d) (hf : Continuous f) (h : \u2200 x, 6 * f (f x) = 2 * f x + x) : Function.Injective f   :=  by\n  \n  intro x y hxy\n  have h1 := h x\n  have h2 := h y\n  simp only [hxy] at h1 h2\n  linarith", "timeout": 30}
+2025-07-16 21:47:41.711 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53136 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:41.721 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10226] Processing code: {"custom_id": "lean_workbook_plus_10226", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10226 (a b c : \u211d) : (a - 1) ^ 2 * (a - 1 / 2) ^ 2 + (b - 1) ^ 2 * (b - 1 / 2) ^ 2 + (c - 1) ^ 2 * (c - 1 / 2) ^ 2 \u2265 0   :=  by\n  \n  nlinarith [sq_nonneg (a - 1), sq_nonneg (b - 1), sq_nonneg (c - 1),\n    sq_nonneg (a - 1 / 2), sq_nonneg (b - 1 / 2), sq_nonneg (c - 1 / 2)]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]\n  <;> apply_rules [sq_nonneg, add_nonneg, mul_nonneg, zero_le_one, zero_le_two, zero_le_three]", "timeout": 30}
+2025-07-16 21:47:41.733 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54634 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:41.747 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10023] Processing code: {"custom_id": "lean_workbook_plus_10023", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10023 (a b c : \u211d) (ha : 0 < a) (hb : 0 < b) (hc : 0 < c) (hab : a * b * c = 1) (h : a^3 + b^3 + c^3 = a * b + b * c + c * a) : a * b * c \u2264 1   :=  by\n  \n  nlinarith [sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a),\n    sq_nonneg (a + b), sq_nonneg (b + c), sq_nonneg (c + a)]", "timeout": 30}
+2025-07-16 21:47:41.812 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53168 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:41.822 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10293] Processing code: {"custom_id": "lean_workbook_plus_10293", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10293 : sin (4 * x) = 2 * sin (2 * x) * cos (2 * x)   :=  by\n  \n  rw [show sin (4 * x) = 2 * sin (2 * x) * cos (2 * x) by\n    rw [\u2190 sin_two_mul, mul_comm]\n    ring]", "timeout": 30}
+2025-07-16 21:47:41.981 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53204 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:41.990 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_1018] Processing code: {"custom_id": "lean_workbook_plus_1018", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_1018 : \u2200 a b c : \u211d, (a * b + b * c + c * a) ^ 2 \u2265 3 * a * b * c * (a + b + c)   :=  by\n  \n  intro a b c\n  nlinarith [sq_nonneg (a * b - b * c), sq_nonneg (b * c - c * a), sq_nonneg (c * a - a * b),\n    sq_nonneg (a * b + b * c), sq_nonneg (b * c + c * a), sq_nonneg (c * a + a * b)]", "timeout": 30}
+2025-07-16 21:47:42.202 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54672 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:42.220 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10132] Processing code: {"custom_id": "lean_workbook_plus_10132", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10132 (a b c d : \u211d) : (c^2 * a^2 + b^2 * d^2 + (1 / 2) * (d^2 + b^2) * (c^2 + a^2) \u2265 (a * b + c * d) * (b * c + a * d))   :=  by\n  \n  nlinarith [sq_nonneg (a * c - b * d), sq_nonneg (a * d - b * c), sq_nonneg (a * b - c * d),\n    sq_nonneg (a * c + b * d), sq_nonneg (a * d + b * c), sq_nonneg (a * b + c * d),\n    sq_nonneg (a * c - b * d + c * a - d * b), sq_nonneg (a * d - b * c + c * d - a * b),\n    sq_nonneg (a * b - c * d + a * d - b * c), sq_nonneg (a * c - b * d + a * b - c * d)]", "timeout": 30}
+2025-07-16 21:47:42.350 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53056 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:42.366 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10392] Processing code: {"custom_id": "lean_workbook_plus_10392", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10392 :\n  2 * (Nat.choose 3 2 * Nat.choose 3 1) = 18   :=  by\n  \n  norm_num [Nat.choose_two_right, Nat.choose_one_right, Nat.choose_self]", "timeout": 30}
+2025-07-16 21:47:42.418 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53114 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:42.426 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10227] Processing code: {"custom_id": "lean_workbook_plus_10227", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10227 (x y z : \u211d) (hx : x = 1 / 3) (hy : y = 1 / 3) (hz : z = 1 / 3) : (4 / (x + y) ^ 2 + 4 / (x + z) ^ 2 + 4 / (y + z) ^ 2) \u2265 27 / (x + y + z) ^ 2   :=  by\n  \n  rw [hx, hy, hz]\n  norm_num", "timeout": 30}
+2025-07-16 21:47:42.446 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:48730 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:42.464 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10295] Processing code: {"custom_id": "lean_workbook_plus_10295", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10295 (n k : \u2115) : choose (n - 1 + k) (n - 1) = choose (n - 1 + k) k   :=  by\n  \n  apply choose_symm_of_eq_add\n  <;> simp_all\n  <;> omega", "timeout": 30}
+2025-07-16 21:47:42.582 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:48736 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:42.591 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_10181] Processing code: {"custom_id": "lean_workbook_plus_10181", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_10181 (P : \u2115 \u2192 Prop) (base : P 0) (induction : \u2200 m : \u2115, P m \u2192 P (m + 1)) : \u2200 n : \u2115, P n   :=  by\n  \n  intro n\n  induction n with\n  | zero =>\n    exact base\n  | succ n hn =>\n    apply induction\n    exact hn", "timeout": 30}
+2025-07-16 21:47:42.617 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:48750 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:42.623 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53148 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:42.626 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_1011] Processing code: {"custom_id": "lean_workbook_plus_1011", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\n\ntheorem lean_workbook_plus_1011 (a : \u2115 \u2192 \u211d) (c x : \u211d) (hc : 0 < c) (hx : |x| < c) : \u2203 y : \u211d, y = \u2211' k : \u2115, a k * x ^ k   :=  by\n  \n  exact \u27e8\u2211' k : \u2115, a k * x ^ k, by simp [abs_lt]\u27e9", "timeout": 30}
+2025-07-16 21:47:42.637 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:48760 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:42.659 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54664 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:42.737 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:48772 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:43.692 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53192 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:43.715 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54498 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:43.962 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53070 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.146 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53208 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.156 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54656 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.229 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54558 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.269 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53120 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.293 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54612 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.513 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53160 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.679 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54538 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.785 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54550 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.865 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53182 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:44.999 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54620 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:45.082 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54666 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:45.125 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54600 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:45.736 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53078 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:46.586 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:54650 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:48.029 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:48720 - "POST /verify HTTP/1.1" 200
+2025-07-16 21:47:45.714 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id d2494526-50ce-4744-b59b-21bdc31eb034
+2025-07-16 21:47:45.714 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 12be45c3-b9cb-424a-bfb2-6fa0a43dedab
+2025-07-16 21:47:45.714 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 510e2b2f-6ccf-45b8-931d-5d702ed76802
+2025-07-16 21:47:45.714 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 4e569d36-00ad-4423-aa87-ae7051dcefdb
+2025-07-16 21:47:45.714 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id e927984c-42b8-415a-abe4-0f681faf0db9
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 39dc90b7-e614-45c5-b449-a0a2174a3c08
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 9f3583ce-47b1-4e39-a2f7-64b23c0247bd
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 4d018898-f0bc-4ed9-aaec-99427e380637
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 8d08599d-c6ec-4838-8e4a-51a742f7b9a5
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id f7cf33e1-4ed0-4e6e-92a8-1a180b6a23cd
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 8f532993-c72f-4b18-a6bf-4bc93ba1ab12
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 03eeff5e-e39e-471b-a30c-24670428ef19
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id e554e409-d9a7-4378-a0ff-e0a2d9f5d95c
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 33a4bca2-df73-4f3c-8d98-7a9338d74a02
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 57650da7-1c33-441f-bd13-4f3cb1af4a57
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id b244d30f-e869-49d3-aefb-8352658d4698
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 5fc376dd-72ad-410e-b30c-97d8e28aba0b
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 01c08b3e-3aff-42f4-804a-7ef4654f430f
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id b67d638d-3626-4c60-93c3-2f83ba7c1c2e
+2025-07-16 21:47:45.715 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 8a8493bb-ebc4-4b08-bb6e-4a2e508e2ae7
+2025-07-16 21:47:46.032 | INFO     | server.server:_repl_cleaner:62 - Closed d2494526-50ce-4744-b59b-21bdc31eb034 repl
+2025-07-16 21:47:46.051 | INFO     | server.server:_repl_cleaner:62 - Closed 12be45c3-b9cb-424a-bfb2-6fa0a43dedab repl
+2025-07-16 21:47:46.066 | INFO     | server.server:_repl_cleaner:62 - Closed 510e2b2f-6ccf-45b8-931d-5d702ed76802 repl
+2025-07-16 21:47:46.081 | INFO     | server.server:_repl_cleaner:62 - Closed 4e569d36-00ad-4423-aa87-ae7051dcefdb repl
+2025-07-16 21:47:46.102 | INFO     | server.server:_repl_cleaner:62 - Closed e927984c-42b8-415a-abe4-0f681faf0db9 repl
+2025-07-16 21:47:46.119 | INFO     | server.server:_repl_cleaner:62 - Closed 39dc90b7-e614-45c5-b449-a0a2174a3c08 repl
+2025-07-16 21:47:46.136 | INFO     | server.server:_repl_cleaner:62 - Closed 9f3583ce-47b1-4e39-a2f7-64b23c0247bd repl
+2025-07-16 21:47:46.154 | INFO     | server.server:_repl_cleaner:62 - Closed 4d018898-f0bc-4ed9-aaec-99427e380637 repl
+2025-07-16 21:47:46.171 | INFO     | server.server:_repl_cleaner:62 - Closed 8d08599d-c6ec-4838-8e4a-51a742f7b9a5 repl
+2025-07-16 21:47:46.188 | INFO     | server.server:_repl_cleaner:62 - Closed f7cf33e1-4ed0-4e6e-92a8-1a180b6a23cd repl
+2025-07-16 21:47:46.209 | INFO     | server.server:_repl_cleaner:62 - Closed 8f532993-c72f-4b18-a6bf-4bc93ba1ab12 repl
+2025-07-16 21:47:46.229 | INFO     | server.server:_repl_cleaner:62 - Closed 03eeff5e-e39e-471b-a30c-24670428ef19 repl
+2025-07-16 21:47:46.243 | INFO     | server.server:_repl_cleaner:62 - Closed e554e409-d9a7-4378-a0ff-e0a2d9f5d95c repl
+2025-07-16 21:47:46.260 | INFO     | server.server:_repl_cleaner:62 - Closed 33a4bca2-df73-4f3c-8d98-7a9338d74a02 repl
+2025-07-16 21:47:46.276 | INFO     | server.server:_repl_cleaner:62 - Closed 57650da7-1c33-441f-bd13-4f3cb1af4a57 repl
+2025-07-16 21:47:46.293 | INFO     | server.server:_repl_cleaner:62 - Closed b244d30f-e869-49d3-aefb-8352658d4698 repl
+2025-07-16 21:47:46.307 | INFO     | server.server:_repl_cleaner:62 - Closed 5fc376dd-72ad-410e-b30c-97d8e28aba0b repl
+2025-07-16 21:47:46.327 | INFO     | server.server:_repl_cleaner:62 - Closed 01c08b3e-3aff-42f4-804a-7ef4654f430f repl
+2025-07-16 21:47:46.352 | INFO     | server.server:_repl_cleaner:62 - Closed b67d638d-3626-4c60-93c3-2f83ba7c1c2e repl
+2025-07-16 21:47:46.368 | INFO     | server.server:_repl_cleaner:62 - Closed 8a8493bb-ebc4-4b08-bb6e-4a2e508e2ae7 repl
+2025-07-16 21:47:49.023 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 8b73baf4  
+2     | ['import Mathlib\nimport Aesop']              | bb379440  
+3     | ['import Mathlib\nimport Aesop']              | 873577c5  
+4     | ['import Mathlib\nimport Aesop']              | 093f69fc  
+5     | ['import Mathlib\nimport Aesop']              | 430cc80c  
+6     | ['import Mathlib\nimport Aesop']              | 237b7764  
+7     | ['import Mathlib\nimport Aesop']              | 41f2123e  
+8     | ['import Mathlib\nimport Aesop']              | 5c6a4de7  
+9     | ['import Mathlib\nimport Aesop']              | caf39180  
+10    | ['import Mathlib\nimport Aesop']              | a056289e  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 28        
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.97      
+      | its                                           | 1.8666666666666667
+=================================================================
+2025-07-16 21:48:04.029 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 8b73baf4  
+2     | ['import Mathlib\nimport Aesop']              | bb379440  
+3     | ['import Mathlib\nimport Aesop']              | 873577c5  
+4     | ['import Mathlib\nimport Aesop']              | 093f69fc  
+5     | ['import Mathlib\nimport Aesop']              | 430cc80c  
+6     | ['import Mathlib\nimport Aesop']              | 237b7764  
+7     | ['import Mathlib\nimport Aesop']              | 41f2123e  
+8     | ['import Mathlib\nimport Aesop']              | 5c6a4de7  
+9     | ['import Mathlib\nimport Aesop']              | caf39180  
+10    | ['import Mathlib\nimport Aesop']              | a056289e  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 21:48:16.360 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 8b73baf4  
+2     | ['import Mathlib\nimport Aesop']              | bb379440  
+3     | ['import Mathlib\nimport Aesop']              | 873577c5  
+4     | ['import Mathlib\nimport Aesop']              | 093f69fc  
+5     | ['import Mathlib\nimport Aesop']              | 430cc80c  
+6     | ['import Mathlib\nimport Aesop']              | 237b7764  
+7     | ['import Mathlib\nimport Aesop']              | 41f2123e  
+8     | ['import Mathlib\nimport Aesop']              | 5c6a4de7  
+9     | ['import Mathlib\nimport Aesop']              | caf39180  
+10    | ['import Mathlib\nimport Aesop']              | a056289e  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 21:48:31.363 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 8b73baf4  
+2     | ['import Mathlib\nimport Aesop']              | bb379440  
+3     | ['import Mathlib\nimport Aesop']              | 873577c5  
+4     | ['import Mathlib\nimport Aesop']              | 093f69fc  
+5     | ['import Mathlib\nimport Aesop']              | 430cc80c  
+6     | ['import Mathlib\nimport Aesop']              | 237b7764  
+7     | ['import Mathlib\nimport Aesop']              | 41f2123e  
+8     | ['import Mathlib\nimport Aesop']              | 5c6a4de7  
+9     | ['import Mathlib\nimport Aesop']              | caf39180  
+10    | ['import Mathlib\nimport Aesop']              | a056289e  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 21:48:43.696 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 8b73baf4  
+2     | ['import Mathlib\nimport Aesop']              | bb379440  
+3     | ['import Mathlib\nimport Aesop']              | 873577c5  
+4     | ['import Mathlib\nimport Aesop']              | 093f69fc  
+5     | ['import Mathlib\nimport Aesop']              | 430cc80c  
+6     | ['import Mathlib\nimport Aesop']              | 237b7764  
+7     | ['import Mathlib\nimport Aesop']              | 41f2123e  
+8     | ['import Mathlib\nimport Aesop']              | 5c6a4de7  
+9     | ['import Mathlib\nimport Aesop']              | caf39180  
+10    | ['import Mathlib\nimport Aesop']              | a056289e  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 21:48:58.698 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 8b73baf4  
+2     | ['import Mathlib\nimport Aesop']              | bb379440  
+3     | ['import Mathlib\nimport Aesop']              | 873577c5  
+4     | ['import Mathlib\nimport Aesop']              | 093f69fc  
+5     | ['import Mathlib\nimport Aesop']              | 430cc80c  
+6     | ['import Mathlib\nimport Aesop']              | 237b7764  
+7     | ['import Mathlib\nimport Aesop']              | 41f2123e  
+8     | ['import Mathlib\nimport Aesop']              | 5c6a4de7  
+9     | ['import Mathlib\nimport Aesop']              | caf39180  
+10    | ['import Mathlib\nimport Aesop']              | a056289e  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 21:49:11.051 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 8b73baf4  
+2     | ['import Mathlib\nimport Aesop']              | bb379440  
+3     | ['import Mathlib\nimport Aesop']              | 873577c5  
+4     | ['import Mathlib\nimport Aesop']              | 093f69fc  
+5     | ['import Mathlib\nimport Aesop']              | 430cc80c  
+6     | ['import Mathlib\nimport Aesop']              | 237b7764  
+7     | ['import Mathlib\nimport Aesop']              | 41f2123e  
+8     | ['import Mathlib\nimport Aesop']              | 5c6a4de7  
+9     | ['import Mathlib\nimport Aesop']              | caf39180  
+10    | ['import Mathlib\nimport Aesop']              | a056289e  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 21:49:26.058 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 8b73baf4  
+2     | ['import Mathlib\nimport Aesop']              | bb379440  
+3     | ['import Mathlib\nimport Aesop']              | 873577c5  
+4     | ['import Mathlib\nimport Aesop']              | 093f69fc  
+5     | ['import Mathlib\nimport Aesop']              | 430cc80c  
+6     | ['import Mathlib\nimport Aesop']              | 237b7764  
+7     | ['import Mathlib\nimport Aesop']              | 41f2123e  
+8     | ['import Mathlib\nimport Aesop']              | 5c6a4de7  
+9     | ['import Mathlib\nimport Aesop']              | caf39180  
+10    | ['import Mathlib\nimport Aesop']              | a056289e  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 21:59:04.167 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-16 21:59:04.270 | INFO     | uvicorn.server:_serve:94 - Finished server process [1607]

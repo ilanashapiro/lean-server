@@ -1,0 +1,796 @@
+2025-07-16 19:30:22.959 | INFO     | uvicorn.server:_serve:84 - Started server process [1707]
+2025-07-16 19:30:22.959 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-16 19:30:23.297 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-16 19:30:23.412 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-16 19:30:25.349 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:41190 - "GET / HTTP/1.1" 200
+2025-07-16 19:30:25.388 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-16 19:30:26.902 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:41206 - "POST /verify HTTP/1.1" 200
+2025-07-16 19:30:31.024 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:52930 - "GET / HTTP/1.1" 200
+2025-07-16 19:30:33.116 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_10009] Processing code: {"custom_id": "lean_workbook_10009", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/- prove that $a^{3}+b^{3}+c^{3}+{\\frac {15\\,abc}{4}} \\geq \\frac{1}{4}$ given $a, b, c,$ are non-negative reals such that $a+b+c=1$ -/\ntheorem lean_workbook_10009 (a b c: \u211d) (ha : a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0 \u2227 a + b + c = 1): a^3 + b^3 + c^3 + (15 * a * b * c)/4 \u2265 1/4  := by\n  /-\n  Given non-negative real numbers \\(a\\), \\(b\\), and \\(c\\) such that \\(a + b + c = 1\\), we need to prove that \\(a^3 + b^3 + c^3 + \\frac{15abc}{4} \\geq \\frac{1}{4}\\).\n  1. **Case Analysis**: We analyze different cases based on the relationships between \\(a\\), \\(b\\), and \\(c\\).\n  2. **Non-negativity and Bounds**: Utilize the non-negativity of \\(a\\), \\(b\\), and \\(c\\) and the fact that their sum is 1.\n  3. **Simplification and Comparison**: Use algebraic simplification and numerical comparison to show the inequality holds.\n  -/\n  -- Consider different cases based on the relationships between a, b, and c\n  cases' le_total a b with hab hab <;> cases' le_total b c with hbc hbc <;> cases' le_total c a with hac hac <;>\n  -- Use non-negativity of a, b, and c and their sum to prove the inequality\n  nlinarith [sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a),\n    sq_nonneg (a + b + c)]", "timeout": 30}
+2025-07-16 19:30:35.225 | INFO     | server.server:_repl_creater:41 - Created 22 ['import Mathlib\nimport Aesop'] repls with response [{'env': 0, 'time': 8.562752723693848}, {'env': 0,
+2025-07-16 19:30:38.302 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+2     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+3     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+4     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+5     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+6     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+7     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+8     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+9     | ['import Mathlib\nimport Aesop']              | 4445f41c  
+10    | ['import Mathlib\nimport Aesop']              | 25bd7c5d  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 1         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 19:30:47.938 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:52942 - "POST /verify HTTP/1.1" 200
+2025-07-16 19:30:50.587 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 23        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 23        
+      | Idle                                          | 23        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:30:52.519 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id 748b80d8-a4b3-4069-8e15-0547ba53a02a
+2025-07-16 19:30:53.342 | INFO     | server.server:_repl_cleaner:62 - Closed 748b80d8-a4b3-4069-8e15-0547ba53a02a repl
+2025-07-16 19:31:05.590 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:31:17.870 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:31:32.881 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:31:45.203 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:31:53.591 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:52670 - "GET / HTTP/1.1" 200
+2025-07-16 19:31:55.362 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_10009] Processing code: {"custom_id": "lean_workbook_10009", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/- prove that $a^{3}+b^{3}+c^{3}+{\\frac {15\\,abc}{4}} \\geq \\frac{1}{4}$ given $a, b, c,$ are non-negative reals such that $a+b+c=1$ -/\ntheorem lean_workbook_10009 (a b c: \u211d) (ha : a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0 \u2227 a + b + c = 1): a^3 + b^3 + c^3 + (15 * a * b * c)/4 \u2265 1/4  := by\n  /-\n  Given non-negative real numbers \\(a\\), \\(b\\), and \\(c\\) such that \\(a + b + c = 1\\), we need to prove that \\(a^3 + b^3 + c^3 + \\frac{15abc}{4} \\geq \\frac{1}{4}\\).\n  1. **Case Analysis**: We analyze different cases based on the relationships between \\(a\\), \\(b\\), and \\(c\\).\n  2. **Non-negativity and Bounds**: Utilize the non-negativity of \\(a\\), \\(b\\), and \\(c\\) and the fact that their sum is 1.\n  3. **Simplification and Comparison**: Use algebraic simplification and numerical comparison to show the inequality holds.\n  -/\n  -- Consider different cases based on the relationships between a, b, and c\n  cases' le_total a b with hab hab <;> cases' le_total b c with hbc hbc <;> cases' le_total c a with hac hac <;>\n  -- Use non-negativity of a, b, and c and their sum to prove the inequality\n  nlinarith [sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a),\n    sq_nonneg (a + b + c)]", "timeout": 30}
+2025-07-16 19:32:00.204 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 1         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.50      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 19:32:05.892 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:52676 - "POST /verify HTTP/1.1" 200
+2025-07-16 19:32:08.600 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:45734 - "GET / HTTP/1.1" 200
+2025-07-16 19:32:10.941 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_10009] Processing code: {"custom_id": "lean_workbook_10009", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/- prove that $a^{3}+b^{3}+c^{3}+{\\frac {15\\,abc}{4}} \\geq \\frac{1}{4}$ given $a, b, c,$ are non-negative reals such that $a+b+c=1$ -/\ntheorem lean_workbook_10009 (a b c: \u211d) (ha : a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0 \u2227 a + b + c = 1): a^3 + b^3 + c^3 + (15 * a * b * c)/4 \u2265 1/4  := by\n  /-\n  Given non-negative real numbers \\(a\\), \\(b\\), and \\(c\\) such that \\(a + b + c = 1\\), we need to prove that \\(a^3 + b^3 + c^3 + \\frac{15abc}{4} \\geq \\frac{1}{4}\\).\n  1. **Case Analysis**: We analyze different cases based on the relationships between \\(a\\), \\(b\\), and \\(c\\).\n  2. **Non-negativity and Bounds**: Utilize the non-negativity of \\(a\\), \\(b\\), and \\(c\\) and the fact that their sum is 1.\n  3. **Simplification and Comparison**: Use algebraic simplification and numerical comparison to show the inequality holds.\n  -/\n  -- Consider different cases based on the relationships between a, b, and c\n  cases' le_total a b with hab hab <;> cases' le_total b c with hbc hbc <;> cases' le_total c a with hac hac <;>\n  -- Use non-negativity of a, b, and c and their sum to prove the inequality\n  nlinarith [sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a),\n    sq_nonneg (a + b + c)]", "timeout": 30}
+2025-07-16 19:32:12.483 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 1         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.50      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 19:32:19.122 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:44852 - "POST /verify HTTP/1.1" 200
+2025-07-16 19:32:27.486 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:32:33.363 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:40504 - "GET / HTTP/1.1" 200
+2025-07-16 19:32:35.077 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_10009] Processing code: {"custom_id": "lean_workbook_10009", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/- prove that $a^{3}+b^{3}+c^{3}+{\\frac {15\\,abc}{4}} \\geq \\frac{1}{4}$ given $a, b, c,$ are non-negative reals such that $a+b+c=1$ -/\ntheorem lean_workbook_10009 (a b c: \u211d) (ha : a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0 \u2227 a + b + c = 1): a^3 + b^3 + c^3 + (15 * a * b * c)/4 \u2265 1/4  := by\n  /-\n  Given non-negative real numbers \\(a\\), \\(b\\), and \\(c\\) such that \\(a + b + c = 1\\), we need to prove that \\(a^3 + b^3 + c^3 + \\frac{15abc}{4} \\geq \\frac{1}{4}\\).\n  1. **Case Analysis**: We analyze different cases based on the relationships between \\(a\\), \\(b\\), and \\(c\\).\n  2. **Non-negativity and Bounds**: Utilize the non-negativity of \\(a\\), \\(b\\), and \\(c\\) and the fact that their sum is 1.\n  3. **Simplification and Comparison**: Use algebraic simplification and numerical comparison to show the inequality holds.\n  -/\n  -- Consider different cases based on the relationships between a, b, and c\n  cases' le_total a b with hab hab <;> cases' le_total b c with hbc hbc <;> cases' le_total c a with hac hac <;>\n  -- Use non-negativity of a, b, and c and their sum to prove the inequality\n  nlinarith [sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a),\n    sq_nonneg (a + b + c)]", "timeout": 30}
+2025-07-16 19:32:39.781 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 1         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.50      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 19:32:43.050 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:40512 - "POST /verify HTTP/1.1" 200
+2025-07-16 19:32:47.145 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53876 - "GET / HTTP/1.1" 200
+2025-07-16 19:32:48.916 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_10009] Processing code: {"custom_id": "lean_workbook_10009", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n/- prove that $a^{3}+b^{3}+c^{3}+{\\frac {15\\,abc}{4}} \\geq \\frac{1}{4}$ given $a, b, c,$ are non-negative reals such that $a+b+c=1$ -/\ntheorem lean_workbook_10009 (a b c: \u211d) (ha : a \u2265 0 \u2227 b \u2265 0 \u2227 c \u2265 0 \u2227 a + b + c = 1): a^3 + b^3 + c^3 + (15 * a * b * c)/4 \u2265 1/4  := by\n  /-\n  Given non-negative real numbers \\(a\\), \\(b\\), and \\(c\\) such that \\(a + b + c = 1\\), we need to prove that \\(a^3 + b^3 + c^3 + \\frac{15abc}{4} \\geq \\frac{1}{4}\\).\n  1. **Case Analysis**: We analyze different cases based on the relationships between \\(a\\), \\(b\\), and \\(c\\).\n  2. **Non-negativity and Bounds**: Utilize the non-negativity of \\(a\\), \\(b\\), and \\(c\\) and the fact that their sum is 1.\n  3. **Simplification and Comparison**: Use algebraic simplification and numerical comparison to show the inequality holds.\n  -/\n  -- Consider different cases based on the relationships between a, b, and c\n  cases' le_total a b with hab hab <;> cases' le_total b c with hbc hbc <;> cases' le_total c a with hac hac <;>\n  -- Use non-negativity of a, b, and c and their sum to prove the inequality\n  nlinarith [sq_nonneg (a - b), sq_nonneg (b - c), sq_nonneg (c - a),\n    sq_nonneg (a + b + c)]", "timeout": 30}
+2025-07-16 19:32:54.788 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 1         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.50      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 19:32:59.555 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53884 - "POST /verify HTTP/1.1" 200
+2025-07-16 19:33:07.116 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:33:22.120 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:33:34.401 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:33:49.403 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:34:01.704 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:34:16.706 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:34:29.002 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:34:44.011 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:34:56.316 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:35:11.324 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:35:23.612 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:35:38.616 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:35:50.933 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 1a41173e  
+2     | ['import Mathlib\nimport Aesop']              | 8c397df2  
+3     | ['import Mathlib\nimport Aesop']              | 2f4e5fea  
+4     | ['import Mathlib\nimport Aesop']              | 1fdc1868  
+5     | ['import Mathlib\nimport Aesop']              | 36a0ac18  
+6     | ['import Mathlib\nimport Aesop']              | 18f0b590  
+7     | ['import Mathlib\nimport Aesop']              | 3cf47793  
+8     | ['import Mathlib\nimport Aesop']              | 4a63f055  
+9     | ['import Mathlib\nimport Aesop']              | 64b52c26  
+10    | ['import Mathlib\nimport Aesop']              | 4445f41c  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 19:44:17.778 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-16 19:44:17.782 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:47172 - "GET / HTTP/1.1" 200
+2025-07-16 19:44:17.883 | INFO     | uvicorn.server:_serve:94 - Finished server process [1707]

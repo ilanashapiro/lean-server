@@ -1,0 +1,159 @@
+2025-07-16 04:40:44.675 | INFO     | uvicorn.server:_serve:84 - Started server process [10]
+2025-07-16 04:40:44.676 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-16 04:40:45.034 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-16 04:40:45.190 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-16 04:40:45.440 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.441 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.441 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.443 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.443 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.443 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.446 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.447 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.450 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.447 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.450 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.451 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.451 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.450 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.450 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.453 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.453 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.447 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.455 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.455 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.452 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.494 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.495 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.495 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.513 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.513 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.513 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.515 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.516 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.517 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.554 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.554 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.555 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.561 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.561 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.561 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.623 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.624 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.625 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.624 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.625 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.626 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.632 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.633 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.633 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.634 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.634 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.635 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.670 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.670 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:45.671 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.671 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:45.671 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:45.672 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:46.498 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:46.498 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:46.499 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:46.537 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:46.538 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:46.538 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:46.646 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:42960 - "GET / HTTP/1.1" 200
+2025-07-16 04:40:46.658 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-16 04:40:46.696 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:46.696 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:46.696 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:49.787 | ERROR    | server.leanrepl:_send_command:80 - Error decoding JSON:
+2025-07-16 04:40:49.788 | ERROR    | server.leanrepl:_send_command:81 - Response received:
+2025-07-16 04:40:49.789 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:49.790 | ERROR    | server.server:process_one_code_with_repl_fast:227 - [1234] Error raised in one_pass_verify with 1-shot repl: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30, "error": "Lean process encountered an error: info: proofwidgets: checking out revision '2b000e02d50394af68cfb4770a291113d94801b5'\nerror: external command 'git' exited with code 128\n"}
+2025-07-16 04:40:49.794 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:42964 - "POST /verify HTTP/1.1" 200
+2025-07-16 04:40:58.065 | ERROR    | server.leanrepl:_send_command:93 - Error from stderr: %s
+2025-07-16 04:40:58.546 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 0d44e892  
+2     | ['import Mathlib\nimport Aesop']              | 3ac03785  
+3     | ['import Mathlib\nimport Aesop']              | eed604dc  
+4     | ['import Mathlib\nimport Aesop']              | 10eaecb8  
+5     | ['import Mathlib\nimport Aesop']              | 95eb7855  
+6     | ['import Mathlib\nimport Aesop']              | b15a7ab9  
+7     | ['import Mathlib\nimport Aesop']              | fdfe4415  
+8     | ['import Mathlib\nimport Aesop']              | 35ca2534  
+9     | ['import Mathlib\nimport Aesop']              | a70acd54  
+10    | ['import Mathlib\nimport Aesop']              | a4a141ec  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 21        
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:41:13.555 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 0d44e892  
+2     | ['import Mathlib\nimport Aesop']              | 3ac03785  
+3     | ['import Mathlib\nimport Aesop']              | eed604dc  
+4     | ['import Mathlib\nimport Aesop']              | 10eaecb8  
+5     | ['import Mathlib\nimport Aesop']              | 95eb7855  
+6     | ['import Mathlib\nimport Aesop']              | b15a7ab9  
+7     | ['import Mathlib\nimport Aesop']              | fdfe4415  
+8     | ['import Mathlib\nimport Aesop']              | 35ca2534  
+9     | ['import Mathlib\nimport Aesop']              | a70acd54  
+10    | ['import Mathlib\nimport Aesop']              | a4a141ec  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 21        
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:41:22.515 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-16 04:41:22.618 | INFO     | uvicorn.lifespan.on:shutdown:67 - Waiting for application shutdown.
+2025-07-16 04:41:22.624 | ERROR    | uvicorn.lifespan.on:send:134 - Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/usr/local/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 134, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "/usr/local/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 99, in lifespan
+    await task
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 60, in _repl_cleaner
+    id, repl = repl_cache.close_queue.get()
+    ^^^^^^^^
+TypeError: cannot unpack non-iterable LeanREPL object
+
+2025-07-16 04:41:22.624 | ERROR    | uvicorn.lifespan.on:shutdown:73 - Application shutdown failed. Exiting.
+2025-07-16 04:41:22.625 | INFO     | uvicorn.server:_serve:94 - Finished server process [10]

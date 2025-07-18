@@ -1,0 +1,731 @@
+2025-07-16 20:11:39.929 | INFO     | uvicorn.server:_serve:84 - Started server process [5899]
+2025-07-16 20:11:39.930 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-16 20:11:40.227 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-16 20:11:40.323 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-16 20:11:40.692 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  -- First, assume the left-hand side is true and show it implies the right-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx] at h\n  -- The equation simplifies directly to the desired form.\n  exact h\n  -- Now, assume the right-hand side is true and show it implies the left-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:11:42.042 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:59514 - "GET / HTTP/1.1" 200
+2025-07-16 20:11:42.071 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-16 20:11:43.781 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:59528 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:11:48.235 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:59508 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:11:49.288 | INFO     | server.server:_repl_creater:41 - Created 22 ['import Mathlib\nimport Aesop'] repls with response [{'env': 0, 'time': 6.838472604751587}, {'env': 0,
+2025-07-16 20:11:49.289 | INFO     | utils.repl_cache:evict_if_needed:67 - Succesfully evicted header ['import Mathlib\nimport Aesop with id a2d976ac-74bf-44f1-84c7-fabe0c68fc71
+2025-07-16 20:11:50.297 | INFO     | server.server:_repl_cleaner:62 - Closed a2d976ac-74bf-44f1-84c7-fabe0c68fc71 repl
+2025-07-16 20:11:52.560 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 1         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 20:11:59.758 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:43468 - "GET / HTTP/1.1" 200
+2025-07-16 20:12:01.587 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx] at h\n  -- The equation simplifies directly to the desired form.\n  exact h\n  -- Now, assume the right-hand side is true and show it implies the left-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:12:01.624 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:43476 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:12:07.563 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 1         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.50      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 20:12:19.880 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:12:34.886 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:12:47.211 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:12:55.072 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:56904 - "GET / HTTP/1.1" 200
+2025-07-16 20:12:56.873 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  exact h\n  intro h\n  rw [hx]\n  exact h", "timeout": 30}
+2025-07-16 20:12:56.917 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:56916 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:13:02.213 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 1         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.50      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 20:13:03.403 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:34946 - "GET / HTTP/1.1" 200
+2025-07-16 20:13:05.216 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  exact h\n  intro h\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:13:05.250 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:34952 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:13:11.538 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:52294 - "GET / HTTP/1.1" 200
+2025-07-16 20:13:10.477 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  exact h\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:13:10.516 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:52296 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:13:14.546 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 2         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.67      
+      | its                                           | 0.13333333333333333
+=================================================================
+2025-07-16 20:13:14.783 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:52304 - "GET / HTTP/1.1" 200
+2025-07-16 20:13:16.663 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  exact h\n  -- Now, assume the right-hand side is true and show it implies the left-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:13:16.698 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:39060 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:13:21.034 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:39068 - "GET / HTTP/1.1" 200
+2025-07-16 20:13:22.805 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx] at h\n  -- The equation simplifies directly to the desired form.\n  exact h\n  -- Now, assume the right-hand side is true and show it implies the left-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:13:22.839 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:39084 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:13:29.548 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 2         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.67      
+      | its                                           | 0.13333333333333333
+=================================================================
+2025-07-16 20:13:41.867 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:13:56.868 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:13:57.330 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:59514 - "GET / HTTP/1.1" 200
+2025-07-16 20:13:59.183 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\\  rw [hx] at h\n  exact h\n  intro h\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:13:59.213 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:59530 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:14:04.684 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:45164 - "GET / HTTP/1.1" 200
+2025-07-16 20:14:06.400 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx] at h\n  -- The equation simplifies directly to the desired form.\n  exact h\n  -- Now, assume the right-hand side is true and show it implies the left-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:14:06.432 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:45172 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:14:09.190 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 22        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | e4327339  
+2     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+3     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+4     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+5     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+6     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+7     | ['import Mathlib\nimport Aesop']              | ca56716e  
+8     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+9     | ['import Mathlib\nimport Aesop']              | 0178623b  
+10    | ['import Mathlib\nimport Aesop']              | b3d01e40  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 22        
+      | Idle                                          | 22        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 2         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.67      
+      | its                                           | 0.13333333333333333
+=================================================================
+2025-07-16 20:14:12.861 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:36066 - "GET / HTTP/1.1" 200
+2025-07-16 20:14:15.238 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\\  rw [hx] at h\n  -- The equation simplifies directly to the desired form.\n  exact h\n  -- Now, assume the right-hand side is true and show it implies the left-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:14:15.270 | DEBUG    | server.leanrepl:exceeds_memory_limit:212 - REPL pid 5950 using 4.03GB
+2025-07-16 20:14:15.270 | WARNING  | server.server:process_one_code_with_repl_fast:288 - REPL exceeds memory limit after execution, destroying it. last verified proof: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\\  rw [hx] at h\n  -- The equation simplifies directly to the desired form.\n  exact h\n  -- Now, assume the right-hand side is true and show it implies the left-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:14:15.271 | WARNING  | server.server:process_one_code_with_repl_fast:295 - Removing repl from cache: e4327339-5cb1-412e-a7a9-a8664be4dfc4
+2025-07-16 20:14:15.271 | INFO     | utils.repl_cache:destroy:79 - Destroying header ['import Mathlib\nimport Aesop with id e4327339-5cb1-412e-a7a9-a8664be4dfc4
+2025-07-16 20:14:15.271 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:36078 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:14:15.402 | INFO     | server.server:_repl_cleaner:62 - Closed e4327339-5cb1-412e-a7a9-a8664be4dfc4 repl
+2025-07-16 20:14:24.192 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 1         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.50      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 20:14:25.920 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:48404 - "GET / HTTP/1.1" 200
+2025-07-16 20:14:27.640 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  rw [hx] at h\n  -- The equation simplifies directly to the desired form.\n  exact h\n  -- Now, assume the right-hand side is true and show it implies the left-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:14:27.676 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:48416 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:14:36.522 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 1         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.50      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 20:14:36.684 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:47172 - "GET / HTTP/1.1" 200
+2025-07-16 20:14:38.275 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  rw [hx] at h\n  exact h\n  -- Now, assume the right-hand side is true and show it implies the left-hand side.\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:14:38.311 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:43414 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:14:45.639 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:43418 - "GET / HTTP/1.1" 200
+2025-07-16 20:14:47.303 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  rw [hx] at h\n  exact h\n  intro h\n  -- Substitute x with 2 in the equation.\n  rw [hx]\n  -- The equation simplifies directly to the desired form.\n  exact h", "timeout": 30}
+2025-07-16 20:14:47.338 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:47956 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:14:51.524 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 2         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.67      
+      | its                                           | 0.13333333333333333
+=================================================================
+2025-07-16 20:15:00.333 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53792 - "GET / HTTP/1.1" 200
+2025-07-16 20:15:02.191 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [lean_workbook_plus_64000] Processing code: {"custom_id": "lean_workbook_plus_64000", "proof_header": "import Mathlib\nimport Aesop", "proof_body": "set_option maxHeartbeats 0\n\nopen BigOperators Real Nat Topology Rat\n\n\ntheorem lean_workbook_plus_64000 (x y : \u211d) (hx : x = 2) : x^y - x = y^2 - y \u2194 2^y - 2 = y^2 - y   := by\n  \n  constructor\n  intro h\n  rw [hx] at h\n  exact h\n  intro h\n  rw [hx]\n  exact h", "timeout": 30}
+2025-07-16 20:15:02.227 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:53794 - "POST /verify HTTP/1.1" 200
+2025-07-16 20:15:03.878 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 1         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.50      
+      | its                                           | 0.06666666666666667
+=================================================================
+2025-07-16 20:15:18.879 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:15:31.173 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:15:46.174 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:15:58.448 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:16:13.450 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:16:25.775 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 21        
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+1     | ['import Mathlib\nimport Aesop']              | 9f6ef9b6  
+2     | ['import Mathlib\nimport Aesop']              | 445fdf97  
+3     | ['import Mathlib\nimport Aesop']              | ec6dd900  
+4     | ['import Mathlib\nimport Aesop']              | 5d0e910c  
+5     | ['import Mathlib\nimport Aesop']              | 87e79ead  
+6     | ['import Mathlib\nimport Aesop']              | ca56716e  
+7     | ['import Mathlib\nimport Aesop']              | 2d8d9c4f  
+8     | ['import Mathlib\nimport Aesop']              | 0178623b  
+9     | ['import Mathlib\nimport Aesop']              | b3d01e40  
+10    | ['import Mathlib\nimport Aesop']              | cd0901e3  
+...   | ...                                           | ...       
+-----------------------------------------------------------------
+      | Total                                         | 21        
+      | Idle                                          | 21        
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 20:16:50.816 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-16 20:16:50.817 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:56182 - "GET / HTTP/1.1" 200
+2025-07-16 20:16:50.917 | INFO     | uvicorn.server:_serve:94 - Finished server process [5899]

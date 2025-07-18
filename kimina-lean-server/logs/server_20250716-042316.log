@@ -1,0 +1,767 @@
+2025-07-16 04:23:16.751 | INFO     | uvicorn.server:_serve:84 - Started server process [616]
+2025-07-16 04:23:16.751 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
+2025-07-16 04:23:16.767 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
+2025-07-16 04:23:16.768 | INFO     | uvicorn.server:_log_started_message:216 - Uvicorn running on http://0.0.0.0:12332 (Press CTRL+C to quit)
+2025-07-16 04:23:16.986 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:33172 - "GET / HTTP/1.1" 200
+2025-07-16 04:23:16.997 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-16 04:23:17.005 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:33186 - "POST /verify HTTP/1.1" 500
+2025-07-16 04:23:17.006 | ERROR    | uvicorn.protocols.http.h11_impl:run_asgi:408 - Exception in ASGI application
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/__main__.py", line 49, in <module>
+    uvicorn.run(
+    │       └ <function run at 0x74fcd4c3fd80>
+    └ <module 'uvicorn' from '/usr/local/lib/python3.11/site-packages/uvicorn/__init__.py'>
+
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 580, in run
+    server.run()
+    │      └ <function Server.run at 0x74fcd4c3ff60>
+    └ <uvicorn.server.Server object at 0x74fcd4ab0310>
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ None
+           │       │   │    └ <function Server.serve at 0x74fcd4c74040>
+           │       │   └ <uvicorn.server.Server object at 0x74fcd4ab0310>
+           │       └ <function run at 0x74fd17a85120>
+           └ <module 'asyncio' from '/usr/local/lib/python3.11/asyncio/__init__.py'>
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x74fcd4cde200>
+           │      └ <function Runner.run at 0x74fd178c8cc0>
+           └ <asyncio.runners.Runner object at 0x74fcd4ab03d0>
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at /usr/local/lib/python3.11/site-packages/uvicorn/server.py:71> wai...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x74fd178c68e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x74fcd4ab03d0>
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x74fd178c6840>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x74fd178c8680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x74fd17a2e8e0>
+    └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+  File "/usr/local/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+> File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x74fcd4ab0d50>
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+                 │    └ <fastapi.applications.FastAPI object at 0x74fd178ed710>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x74fcd4ab0d50>
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x74fcd73749d0>
+          └ <fastapi.applications.FastAPI object at 0x74fd178ed710>
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x74fcd4b118a0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x74fcd4d3e690>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x74fcd73749d0>
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x74fcd4b118a0>
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │                            │    │    └ <starlette.requests.Request object at 0x74fcd4aebfd0>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x74fcd4d3e690>
+          └ <function wrap_app_handling_exceptions at 0x74fd1699d940>
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fcd4b119e0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          └ <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fcd4b119e0>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>>
+          └ <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fcd4b119e0>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │     └ <function Route.handle at 0x74fd1699ef20>
+          └ APIRoute(path='/verify', name='verify', methods=['POST'])
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fcd4b119e0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <function request_response.<locals>.app at 0x74fcd4d36700>
+          └ APIRoute(path='/verify', name='verify', methods=['POST'])
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fcd4b119e0>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │                            │    └ <starlette.requests.Request object at 0x74fcd4b6ae50>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x74fcd4b11b20>
+          └ <function wrap_app_handling_exceptions at 0x74fd1699d940>
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fcd4b11800>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fcd4ca1950>>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          └ <function request_response.<locals>.app.<locals>.app at 0x74fcd4b11b20>
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x74fcd4b6ae50>
+                     └ <function get_request_handler.<locals>.app at 0x74fcd4d365c0>
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x74fd1837eb60>
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 213, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'access': None, 'body': VerifyRequestBody(codes=[Code(custom_id='1234', proof='#check Nat', code=None)], timeout=30, infotre...
+                 │         └ <function verify at 0x74fcd4d36480>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 171, in verify
+    results_data = await asyncio.gather(*tasks)
+                         │       │       └ [<coroutine object process_one_code_with_repl_fast at 0x74fcd4d63dc0>]
+                         │       └ <function gather at 0x74fd178b5bc0>
+                         └ <module 'asyncio' from '/usr/local/lib/python3.11/asyncio/__init__.py'>
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 219, in process_one_code_with_repl_fast
+    lean_repl = LeanREPL()
+                └ <class 'server.leanrepl.LeanREPL'>
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 35, in __init__
+    self.start_process()
+    │    └ <function LeanREPL.start_process at 0x74fcd4d356c0>
+    └ <server.leanrepl.LeanREPL object at 0x74fcd4b6b510>
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 150, in start_process
+    self.process = subprocess.Popen(
+    │              │          └ <class 'subprocess.Popen'>
+    │              └ <module 'subprocess' from '/usr/local/lib/python3.11/subprocess.py'>
+    └ <server.leanrepl.LeanREPL object at 0x74fcd4b6b510>
+
+  File "/usr/local/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    │    │              │     │           │           └ True
+    │    │              │     │           └ <function LeanREPL.start_process.<locals>.preexec_fn at 0x74fcd4b6fba0>
+    │    │              │     └ None
+    │    │              └ ['lake', 'env', '/app/lean-server/LeanDockerWrapper/kimina-lean-server/repl/.lake/build/bin/repl']
+    │    └ <function Popen._execute_child at 0x74fd1809a3e0>
+    └ <Popen: returncode: 255 args: ['lake', 'env', '/app/lean-server/LeanDockerWr...>
+  File "/usr/local/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+          │                    │          │        └ 'lake'
+          │                    │          └ 'No such file or directory'
+          │                    └ 2
+          └ <class 'OSError'>
+
+FileNotFoundError: [Errno 2] No such file or directory: 'lake'
+2025-07-16 04:23:18.028 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-16 04:23:18.042 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:33188 - "POST /verify HTTP/1.1" 500
+2025-07-16 04:23:18.044 | ERROR    | uvicorn.protocols.http.h11_impl:run_asgi:408 - Exception in ASGI application
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/__main__.py", line 49, in <module>
+    uvicorn.run(
+    │       └ <function run at 0x74fcd4c3fd80>
+    └ <module 'uvicorn' from '/usr/local/lib/python3.11/site-packages/uvicorn/__init__.py'>
+
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 580, in run
+    server.run()
+    │      └ <function Server.run at 0x74fcd4c3ff60>
+    └ <uvicorn.server.Server object at 0x74fcd4ab0310>
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ None
+           │       │   │    └ <function Server.serve at 0x74fcd4c74040>
+           │       │   └ <uvicorn.server.Server object at 0x74fcd4ab0310>
+           │       └ <function run at 0x74fd17a85120>
+           └ <module 'asyncio' from '/usr/local/lib/python3.11/asyncio/__init__.py'>
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x74fcd4cde200>
+           │      └ <function Runner.run at 0x74fd178c8cc0>
+           └ <asyncio.runners.Runner object at 0x74fcd4ab03d0>
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at /usr/local/lib/python3.11/site-packages/uvicorn/server.py:71> wai...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x74fd178c68e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x74fcd4ab03d0>
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x74fd178c6840>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x74fd178c8680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x74fd17a2e8e0>
+    └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+  File "/usr/local/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+> File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x74fcd4ab0d50>
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+                 │    └ <fastapi.applications.FastAPI object at 0x74fd178ed710>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x74fcd4ab0d50>
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x74fcd73749d0>
+          └ <fastapi.applications.FastAPI object at 0x74fd178ed710>
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x74fce79431a0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x74fcd4d3e690>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x74fcd73749d0>
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x74fce79431a0>
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │                            │    │    └ <starlette.requests.Request object at 0x74fce7861810>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x74fcd4d3e690>
+          └ <function wrap_app_handling_exceptions at 0x74fd1699d940>
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce7943380>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          └ <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce7943380>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>>
+          └ <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce7943380>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │     └ <function Route.handle at 0x74fd1699ef20>
+          └ APIRoute(path='/verify', name='verify', methods=['POST'])
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce7943380>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <function request_response.<locals>.app at 0x74fcd4d36700>
+          └ APIRoute(path='/verify', name='verify', methods=['POST'])
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce7943380>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │                            │    └ <starlette.requests.Request object at 0x74fce7861950>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x74fce7943420>
+          └ <function wrap_app_handling_exceptions at 0x74fd1699d940>
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce7943560>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce78618d0>>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          └ <function request_response.<locals>.app.<locals>.app at 0x74fce7943420>
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x74fce7861950>
+                     └ <function get_request_handler.<locals>.app at 0x74fcd4d365c0>
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x74fd1837eb60>
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 213, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'access': None, 'body': VerifyRequestBody(codes=[Code(custom_id='1234', proof='#check Nat', code=None)], timeout=30, infotre...
+                 │         └ <function verify at 0x74fcd4d36480>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 171, in verify
+    results_data = await asyncio.gather(*tasks)
+                         │       │       └ [<coroutine object process_one_code_with_repl_fast at 0x74fcd4b484c0>]
+                         │       └ <function gather at 0x74fd178b5bc0>
+                         └ <module 'asyncio' from '/usr/local/lib/python3.11/asyncio/__init__.py'>
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 219, in process_one_code_with_repl_fast
+    lean_repl = LeanREPL()
+                └ <class 'server.leanrepl.LeanREPL'>
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 35, in __init__
+    self.start_process()
+    │    └ <function LeanREPL.start_process at 0x74fcd4d356c0>
+    └ <server.leanrepl.LeanREPL object at 0x74fcd4b04150>
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 150, in start_process
+    self.process = subprocess.Popen(
+    │              │          └ <class 'subprocess.Popen'>
+    │              └ <module 'subprocess' from '/usr/local/lib/python3.11/subprocess.py'>
+    └ <server.leanrepl.LeanREPL object at 0x74fcd4b04150>
+
+  File "/usr/local/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    │    │              │     │           │           └ True
+    │    │              │     │           └ <function LeanREPL.start_process.<locals>.preexec_fn at 0x74fce7943740>
+    │    │              │     └ None
+    │    │              └ ['lake', 'env', '/app/lean-server/LeanDockerWrapper/kimina-lean-server/repl/.lake/build/bin/repl']
+    │    └ <function Popen._execute_child at 0x74fd1809a3e0>
+    └ <Popen: returncode: 255 args: ['lake', 'env', '/app/lean-server/LeanDockerWr...>
+  File "/usr/local/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+          │                    │          │        └ 'lake'
+          │                    │          └ 'No such file or directory'
+          │                    └ 2
+          └ <class 'OSError'>
+
+FileNotFoundError: [Errno 2] No such file or directory: 'lake'
+2025-07-16 04:23:20.058 | DEBUG    | server.server:process_one_code_with_repl_fast:213 - [1234] Processing code: {"custom_id": "1234", "proof_header": "", "proof_body": "#check Nat", "timeout": 30}
+2025-07-16 04:23:20.070 | INFO     | uvicorn.protocols.http.h11_impl:send:473 - 127.0.0.1:33202 - "POST /verify HTTP/1.1" 500
+2025-07-16 04:23:20.072 | ERROR    | uvicorn.protocols.http.h11_impl:run_asgi:408 - Exception in ASGI application
+
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/__main__.py", line 49, in <module>
+    uvicorn.run(
+    │       └ <function run at 0x74fcd4c3fd80>
+    └ <module 'uvicorn' from '/usr/local/lib/python3.11/site-packages/uvicorn/__init__.py'>
+
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/main.py", line 580, in run
+    server.run()
+    │      └ <function Server.run at 0x74fcd4c3ff60>
+    └ <uvicorn.server.Server object at 0x74fcd4ab0310>
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/server.py", line 67, in run
+    return asyncio.run(self.serve(sockets=sockets))
+           │       │   │    │             └ None
+           │       │   │    └ <function Server.serve at 0x74fcd4c74040>
+           │       │   └ <uvicorn.server.Server object at 0x74fcd4ab0310>
+           │       └ <function run at 0x74fd17a85120>
+           └ <module 'asyncio' from '/usr/local/lib/python3.11/asyncio/__init__.py'>
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 190, in run
+    return runner.run(main)
+           │      │   └ <coroutine object Server.serve at 0x74fcd4cde200>
+           │      └ <function Runner.run at 0x74fd178c8cc0>
+           └ <asyncio.runners.Runner object at 0x74fcd4ab03d0>
+  File "/usr/local/lib/python3.11/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-1' coro=<Server.serve() running at /usr/local/lib/python3.11/site-packages/uvicorn/server.py:71> wai...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x74fd178c68e0>
+           │    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x74fcd4ab03d0>
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 641, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x74fd178c6840>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 608, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x74fd178c8680>
+    └ <_UnixSelectorEventLoop running=True closed=False debug=False>
+  File "/usr/local/lib/python3.11/asyncio/base_events.py", line 1936, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x74fd17a2e8e0>
+    └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+  File "/usr/local/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup(<_GatheringFu...r directory')>)>
+> File "/usr/local/lib/python3.11/site-packages/uvicorn/protocols/http/h11_impl.py", line 403, in run_asgi
+    result = await app(  # type: ignore[func-returns-value]
+                   └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x74fcd4ab0d50>
+  File "/usr/local/lib/python3.11/site-packages/uvicorn/middleware/proxy_headers.py", line 60, in __call__
+    return await self.app(scope, receive, send)
+                 │    │   │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+                 │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+                 │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+                 │    └ <fastapi.applications.FastAPI object at 0x74fd178ed710>
+                 └ <uvicorn.middleware.proxy_headers.ProxyHeadersMiddleware object at 0x74fcd4ab0d50>
+  File "/usr/local/lib/python3.11/site-packages/fastapi/applications.py", line 1054, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+                           │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+                           └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+  File "/usr/local/lib/python3.11/site-packages/starlette/applications.py", line 113, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <bound method RequestResponseCycle.send of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x74fcd73749d0>
+          └ <fastapi.applications.FastAPI object at 0x74fd178ed710>
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 186, in __call__
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x74fce79439c0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x74fcd4d3e690>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x74fcd73749d0>
+  File "/usr/local/lib/python3.11/site-packages/starlette/middleware/exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x74fce79439c0>
+          │                            │    │    │     │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │                            │    │    └ <starlette.requests.Request object at 0x74fce7878650>
+          │                            │    └ <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x74fcd4d3e690>
+          └ <function wrap_app_handling_exceptions at 0x74fd1699d940>
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce79436a0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          └ <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 716, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce79436a0>
+          │    │                │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <bound method Router.app of <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>>
+          └ <fastapi.routing.APIRouter object at 0x74fcd4d2a5d0>
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 736, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce79436a0>
+          │     │      │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │     └ <function Route.handle at 0x74fd1699ef20>
+          └ APIRoute(path='/verify', name='verify', methods=['POST'])
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 290, in handle
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce79436a0>
+          │    │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │    └ <function request_response.<locals>.app at 0x74fcd4d36700>
+          └ APIRoute(path='/verify', name='verify', methods=['POST'])
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 78, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce79436a0>
+          │                            │    │        │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          │                            │    └ <starlette.requests.Request object at 0x74fce7878850>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x74fce7943a60>
+          └ <function wrap_app_handling_exceptions at 0x74fd1699d940>
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "/usr/local/lib/python3.11/site-packages/starlette/_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x74fce7943ba0>
+          │   │      └ <bound method RequestResponseCycle.receive of <uvicorn.protocols.http.h11_impl.RequestResponseCycle object at 0x74fce7878450>>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0', 'spec_version': '2.3'}, 'http_version': '1.1', 'server': ('127.0.0.1', 12332), 'c...
+          └ <function request_response.<locals>.app.<locals>.app at 0x74fce7943a60>
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 75, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x74fce7878850>
+                     └ <function get_request_handler.<locals>.app at 0x74fcd4d365c0>
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 302, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x74fd1837eb60>
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 213, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'access': None, 'body': VerifyRequestBody(codes=[Code(custom_id='1234', proof='#check Nat', code=None)], timeout=30, infotre...
+                 │         └ <function verify at 0x74fcd4d36480>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 171, in verify
+    results_data = await asyncio.gather(*tasks)
+                         │       │       └ [<coroutine object process_one_code_with_repl_fast at 0x74fcd4d63dc0>]
+                         │       └ <function gather at 0x74fd178b5bc0>
+                         └ <module 'asyncio' from '/usr/local/lib/python3.11/asyncio/__init__.py'>
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 219, in process_one_code_with_repl_fast
+    lean_repl = LeanREPL()
+                └ <class 'server.leanrepl.LeanREPL'>
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 35, in __init__
+    self.start_process()
+    │    └ <function LeanREPL.start_process at 0x74fcd4d356c0>
+    └ <server.leanrepl.LeanREPL object at 0x74fce7863410>
+
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 150, in start_process
+    self.process = subprocess.Popen(
+    │              │          └ <class 'subprocess.Popen'>
+    │              └ <module 'subprocess' from '/usr/local/lib/python3.11/subprocess.py'>
+    └ <server.leanrepl.LeanREPL object at 0x74fce7863410>
+
+  File "/usr/local/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+    │    │              │     │           │           └ True
+    │    │              │     │           └ <function LeanREPL.start_process.<locals>.preexec_fn at 0x74fcd4b11a80>
+    │    │              │     └ None
+    │    │              └ ['lake', 'env', '/app/lean-server/LeanDockerWrapper/kimina-lean-server/repl/.lake/build/bin/repl']
+    │    └ <function Popen._execute_child at 0x74fd1809a3e0>
+    └ <Popen: returncode: 255 args: ['lake', 'env', '/app/lean-server/LeanDockerWr...>
+  File "/usr/local/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+          │                    │          │        └ 'lake'
+          │                    │          └ 'No such file or directory'
+          │                    └ 2
+          └ <class 'OSError'>
+
+FileNotFoundError: [Errno 2] No such file or directory: 'lake'
+2025-07-16 04:23:31.767 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:23:45.287 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:24:00.291 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:24:13.734 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:24:28.736 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:24:42.246 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:24:57.251 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:25:10.702 | INFO     | utils.repl_cache:print_status:179 - 
+
+=================================================================
+Idx   | Header                                        | Pool Size 
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+Top 10 global LRU repl:
+-----------------------------------------------------------------
+Idx   | Header                                        | ID        
+-----------------------------------------------------------------
+-----------------------------------------------------------------
+      | Total                                         | 0         
+      | Idle                                          | 0         
+      | Create Queue                                  | 0         
+      | Close Queue                                   | 0         
+      | Cache Hits                                    | 0         
+      | Cache Misses                                  | 0         
+      | Cache ratio                                   | 0.00      
+      | its                                           | 0.0       
+=================================================================
+2025-07-16 04:25:22.154 | INFO     | uvicorn.server:shutdown:264 - Shutting down
+2025-07-16 04:25:22.256 | INFO     | uvicorn.lifespan.on:shutdown:67 - Waiting for application shutdown.
+2025-07-16 04:25:22.259 | ERROR    | uvicorn.lifespan.on:send:134 - Traceback (most recent call last):
+  File "/usr/local/lib/python3.11/site-packages/starlette/routing.py", line 694, in lifespan
+    async with self.lifespan_context(app) as maybe_state:
+  File "/usr/local/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/usr/local/lib/python3.11/site-packages/fastapi/routing.py", line 134, in merged_lifespan
+    async with original_context(app) as maybe_original_state:
+  File "/usr/local/lib/python3.11/contextlib.py", line 217, in __aexit__
+    await anext(self.gen)
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 99, in lifespan
+    await task
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/server.py", line 36, in _repl_creater
+    repl = LeanREPL()
+           ^^^^^^^^^^
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 35, in __init__
+    self.start_process()
+  File "/app/lean-server/LeanDockerWrapper/kimina-lean-server/server/leanrepl.py", line 150, in start_process
+    self.process = subprocess.Popen(
+                   ^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/subprocess.py", line 1026, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/usr/local/lib/python3.11/subprocess.py", line 1955, in _execute_child
+    raise child_exception_type(errno_num, err_msg, err_filename)
+FileNotFoundError: [Errno 2] No such file or directory: 'lake'
+
+2025-07-16 04:25:22.260 | ERROR    | uvicorn.lifespan.on:shutdown:73 - Application shutdown failed. Exiting.
+2025-07-16 04:25:22.260 | INFO     | uvicorn.server:_serve:94 - Finished server process [616]
