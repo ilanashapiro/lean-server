@@ -1,6 +1,0 @@
-2025-07-17 03:21:50.889 | INFO     | uvicorn.server:_serve:84 - Started server process [4664]
-2025-07-17 03:21:50.890 | INFO     | uvicorn.lifespan.on:startup:48 - Waiting for application startup.
-2025-07-17 03:21:51.199 | INFO     | uvicorn.lifespan.on:startup:62 - Application startup complete.
-2025-07-17 03:21:51.313 | ERROR    | uvicorn.server:startup:172 - [Errno 98] error while attempting to bind on address ('0.0.0.0', 12332): address already in use
-2025-07-17 03:21:51.314 | INFO     | uvicorn.lifespan.on:shutdown:67 - Waiting for application shutdown.
-2025-07-17 03:22:05.453 | INFO     | uvicorn.lifespan.on:shutdown:76 - Application shutdown complete.
