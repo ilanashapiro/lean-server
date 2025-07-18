@@ -5,7 +5,7 @@ lean-rl-data-Lean-Workbook/
 lean-test-data-Verina/
 __pycache__/
 trapi_DO_NOT_COMMIT.py
-LeanDockerWrapper/server/lean-data.tar
+lean-data.tar
 LeanDockerWrapper/server/lean_rl_db.db
 kimina-lean-server
 venv/

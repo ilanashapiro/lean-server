@@ -7,6 +7,8 @@ Train/val splits come from Lean-Workbook/Goedel LM and FVAPPS, and testing split
 We restrict the examples from Lean-Workbook to be those that have ground truth proofs in Goedel LM, since it is not clear if the remaining examples in Lean-Workbook are provable.
 Some of the examples in Verina have ground truth, but most do not. FVAPPS and MiniF2F do not have ground truth.
 
+The resulting .jsonl files will all be saved to the root directory (you can the SFT files and the unsplit FVAPPS/Lean Workbook files there. The latter 2 files are then further split into train and val). The splits used for RL train/val/test were manually moved inside wrapper_server so that they are baked into the Docker image and stored in the server's database.
+
 ## Building the docker image
 Please allow for ~10min to build the image.
 ```
