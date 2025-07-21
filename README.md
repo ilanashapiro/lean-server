@@ -99,3 +99,9 @@ This should give you the following successful response:
 ```
 
 3. **You should follow [test_wrapper_server.py](test_wrapper_server.py) for an example of calling the verification server programatically**. It shows how to call the server in on both single examples and batch verification.
+
+
+_________________________________________________________________________________________________________________________________________________________________________
+# Running the wrapper server without Docker
+1. Go into the Kimina Lean Server submodule (`cd kimina-lean-server` from root) and follow the setup instructions [here](https://github.com/project-numina/kimina-lean-server#:~:text=compose%20logs%20%2Df-,Direct%20installation,-First%2C%20install%20elan) under "Direct installation." Don't forget to install Elan as the initial step. It's recommended to do all of this in a virtual environment. Stop after the step `cp .env.template .env` -- do not actually start Kimina with `python -m server`.
+2. Go back to the root directory. The command `python3 wrapper_server/server.py` (in the same venv where you install Kimina) will now start the server. Now you can send requests from your client script as desired.
