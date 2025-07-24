@@ -16,7 +16,7 @@ def process_jsonl_file(path, n_samples) -> list:
                     continue
                 payload_dict = {
                     "problem_id": raw["extra_info"]["example_name"],
-                    "answer": ground_truth,
+                    "solution": ground_truth,
                 }
 
                 payload = server.Payload(**payload_dict)
@@ -58,4 +58,4 @@ if __name__ == "__main__":
     payloads = process_jsonl_file(jsonl_path, num_examples)
 
     test_single_examples(payloads)
-    test_batch_examples(payloads)
+    # test_batch_examples(payloads)

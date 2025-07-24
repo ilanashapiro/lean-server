@@ -26,7 +26,7 @@ KIMINA_PROC = None
 LEAN_RL_DB_PATH = os.path.join(CURRENT_DIR, "lean_rl_db.db")
 
 class Payload(BaseModel):
-    answer: str
+    solution: str
     problem_id: str
 
 class Response(BaseModel):
@@ -60,7 +60,7 @@ def _create_sqlite_db(conn, cursor):
     print("All .jsonl files loaded into SQLite.")
 
 def _get_context_and_formal_statement(problem_id):
-    conn = sqlite3.connect(LEAN_RL_DB_PATH)
+    conn = sqlite3.connect(LEAN_RL_DB_PATH, check_same_thread=False)
     cursor = conn.cursor()
 
     # Fetch the stored entry by problem_id
@@ -90,8 +90,8 @@ async def lifespan(app):
         ["python", "-m", "server"], 
         cwd=os.path.join(PARENT_DIR, "kimina-lean-server"),
         env=os.environ,
-        stdout=subprocess.PIPE,
-        stderr=subprocess.PIPE,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
     )
 
     # Wait for it to be ready (blocking)
@@ -122,18 +122,18 @@ async def lifespan(app):
 
 app = FastAPI(lifespan=lifespan)
 
-def _reconstruct_lean_executable(context, formal_statement, answer):
-    return f'{context}\n{formal_statement}\n{answer}'
+def _reconstruct_lean_executable(context, formal_statement, solution):
+    return f'{context}\n{formal_statement}\n{solution}'
 
 @app.post("/check_problem_solution")
-def check_solution(json: Payload, timeout=30) -> Response:
+async def check_solution(json: Payload, timeout=30) -> Response:
     """
         Verify a single problem solution.
 
         Args:
-            payload (Payload): Payload object containing problem_id and answer. The payload should contain:
+            payload (Payload): Payload object containing problem_id and solution. The payload should contain:
                 - problem_id: str
-                - answer: str (the proof)
+                - solution: str (the proof)
             timeout (int): Timeout for each request in seconds (default: 30).
 
         Returns:
@@ -143,23 +143,29 @@ def check_solution(json: Payload, timeout=30) -> Response:
                 - messages: list[str] (messages from the model, e.g. error messages)
     """
     context, formal_statement = _get_context_and_formal_statement(json.problem_id)
-    # print(context, formal_statement)
-    full_lean_executable = _reconstruct_lean_executable(context, formal_statement, json.answer)
+    full_lean_executable = _reconstruct_lean_executable(context, formal_statement, json.solution)
 
     try:
         kimina_requests = [{
             "custom_id": json.problem_id,
             "proof": full_lean_executable
         }]
+
+        print("Verifying Kimina...")
+
+        result = await KIMINA_CLIENT.async_verify(kimina_requests, timeout=timeout)
+        kimina_response = result['results'][0]
         
-        kimina_response = KIMINA_CLIENT.verify(kimina_requests, timeout=timeout)['results'][0]['response']
-        score = parse_client_response(kimina_response)["is_valid_no_sorry"]
+        print("Done verifying Kimina.")
+
+        parse_score = parse_client_response(kimina_response)
         messages = kimina_response.get("messages", [])
-        
+        has_error = any(m.get("severity") == "error" for m in messages)
+
         return Response(
             return_code=0,
-            score=score,
-            messages=[json_module.dumps(m) for m in messages]  # stringify each dict
+            score=parse_score["is_valid_no_sorry"],
+            messages=[json_module.dumps(m) for m in messages]
         )
     except requests.exceptions.Timeout:
         return Response(return_code=-1, score=0.0, messages=["Timeout"])
@@ -173,9 +179,9 @@ def batch_check_solution(payloads: List[Payload], timeout=30, batch_size=1) -> L
         Batch verification for multiple problem solutions.
 
         Args:
-            payloads (List[Payload]): List of Payload objects containing problem_id and answer. Each payload should contain:
+            payloads (List[Payload]): List of Payload objects containing problem_id and solution. Each payload should contain:
                 - problem_id: str
-                - answer: str (the proof)
+                - solution: str (the proof)
             timeout (int): Timeout for each request in seconds (default: 30).
             batch_size (int): Number of requests to send in a single batch (default: 1).
 
@@ -191,15 +197,14 @@ def batch_check_solution(payloads: List[Payload], timeout=30, batch_size=1) -> L
         contexts, formal_statements = zip(*[_get_context_and_formal_statement(json.problem_id) for json in payloads])
         kimina_requests = [{
             "custom_id": payload.problem_id,
-            "proof": _reconstruct_lean_executable(context, formal_statement, payload.answer)
+            "proof": _reconstruct_lean_executable(context, formal_statement, payload.solution)
         } for payload, context, formal_statement in zip(payloads, contexts, formal_statements)]
 
         num_proc = os.cpu_count() or 16
-        client = Lean4Client(base_url=KIMINA_HOST, disable_cache=True)
         
         kimina_results = batch_verify_proof(
             samples=kimina_requests,
-            client=client,
+            client=KIMINA_CLIENT,
             timeout=timeout,
             num_proc=num_proc,
             batch_size=batch_size,
@@ -249,4 +254,4 @@ def wait_for_kimina(host, timeout=30):
         raise RuntimeError(f"Kimina server failed to start with exception: {e}")
 
 if __name__ == "__main__":
-    uvicorn.run("server:app", host="localhost", port=8007, reload=False)
+    uvicorn.run("server:app", host="0.0.0.0", port=8007, reload=False)
