@@ -1,8 +1,8 @@
 import json, sys, time
 
-from trapi_DO_NOT_COMMIT import trapi_call
+# from trapi_DO_NOT_COMMIT import trapi_call
 from pathlib import Path
-from azure.core.exceptions import ServiceResponseError, HttpResponseError
+# from azure.core.exceptions import ServiceResponseError, HttpResponseError
 from datasets import load_dataset
 
 def get_prompt_reasoning(language, instruction, response): 

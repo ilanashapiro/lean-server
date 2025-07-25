@@ -11,7 +11,7 @@ class DataSource(Enum):
     MINIF2F = "MiniF2F"
     LEAN_WORKBOOK = "Lean-Workbook"
 
-DATA_SOURCE_ENUM = DataSource.LEAN_WORKBOOK
+DATA_SOURCE_ENUM = DataSource.FVAPPS
 DATA_SOURCE = DATA_SOURCE_ENUM.value
 
 USER_PROMPT_VERINA = """I need to solve the following task in Lean 4: \n```\n{informal_statement}\n```\n#####\n\n More formally, I need to prove the following theorem in Lean 4: \n```\n{formal_statement}\n```\n#####\n\nThe file context in which I'm writing the proof is \n```\n{file_context}\n```\n#####\n\nI need ALL code to be in Lean 4. I cannot have ANY code written in Lean 3 whatsoever. DO NOT use Lean 3 syntax or features."""
@@ -244,7 +244,7 @@ def augment():
                         num_sorries=datum['sorries'], 
                         spec=datum["spec"]
                     )
-                    context, formal_statement = "", "" # in FVAPPS, we replace the sorries directly with proofs in the file, so we don't record context here
+                    context, formal_statement = datum["spec"], "" # in FVAPPS, we replace the sorries directly with proofs in the spec
                     datum_id = datum["apps_id"]
                     ground_truth = None 
             case DataSource.MINIF2F: # keys: ['name', 'split', 'informal_prefix', 'formal_statement', 'goal', 'header']

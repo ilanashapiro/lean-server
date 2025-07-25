@@ -3,6 +3,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import List
 import os
+import re
 import subprocess
 import time
 import uvicorn
@@ -125,6 +126,20 @@ app = FastAPI(lifespan=lifespan)
 def _reconstruct_lean_executable(context, formal_statement, solution):
     return f'{context}\n{formal_statement}\n{solution}'
 
+def _verify_FVAPPS_response(spec, model_response):
+    def _remove_whitespace(text):
+        # Remove all whitespace (or use ' '.join(text.split()) to preserve single spaces)
+        return re.sub(r'\s+', '', text.lower())
+
+    # normalize by whitespace
+    spec = _remove_whitespace(spec)
+    model_response = _remove_whitespace(model_response)
+
+    for segment in spec.split("sorry"):
+        if segment not in model_response:
+            return False # if any segment of the original spec is not in the solution, we return False
+    return True # ok
+
 @app.post("/check_problem_solution")
 async def check_solution(json: Payload, timeout=30) -> Response:
     """
@@ -143,14 +158,28 @@ async def check_solution(json: Payload, timeout=30) -> Response:
                 - messages: list[str] (messages from the model, e.g. error messages)
     """
     context, formal_statement = _get_context_and_formal_statement(json.problem_id)
-    full_lean_executable = _reconstruct_lean_executable(context, formal_statement, json.solution)
 
-    try:
-        kimina_requests = [{
+    is_fvapps = bool(re.fullmatch(r"\d{4}", json.problem_id)) # FVAPPS problem IDs (and only these) are 4-digit numbers
+    if is_fvapps:
+        # For FVAPPS, we need to verify the response against the original spec (which is stored as context)
+        is_valid_response = _verify_FVAPPS_response(context, json.solution)
+        if not is_valid_response:
+            return Response(
+                return_code=0,
+                score=0.0,
+                messages=["The FVAPPS solution is missing part of the original spec."]
+            )
+        else:
+            full_lean_executable = json.solution # for FVAPPS only, the solution is the full executable bc of the multiple sorries
+    else:
+        full_lean_executable = _reconstruct_lean_executable(context, formal_statement, json.solution)
+
+    kimina_requests = [{
             "custom_id": json.problem_id,
             "proof": full_lean_executable
-        }]
+    }]
 
+    try:
         print("Verifying Kimina...")
 
         result = await KIMINA_CLIENT.async_verify(kimina_requests, timeout=timeout)
