@@ -44,11 +44,11 @@ curl --request POST \
   --header 'Content-Type: application/json' \
   --data '{
 		"problem_id": "lean_workbook_plus_2",
-		"answer": "  \n  constructor\n  intro hx\n  constructor\n  nlinarith [hx]\n  nlinarith [hx]\n  rintro ⟨h1, h2⟩\n  nlinarith"
+		"solution": "  \n  constructor\n  intro hx\n  constructor\n  nlinarith [hx]\n  nlinarith [hx]\n  rintro ⟨h1, h2⟩\n  nlinarith"
 }' | jq
 ```
 
-Note that `problem_id` needs to correspond to something an `example_name` that's actually in the Lean annotated datasets inside `wrapper_server` (these are in an SQLite database in the image). This database is queried to get the remainder of the Lean file needed to make the answer into a complete Lean executable that Kimina can check.
+Note that `problem_id` needs to correspond to something an `example_name` that's actually in the Lean annotated datasets inside `wrapper_server` (these are in an SQLite database in the image). This database is queried to get the remainder of the Lean file needed to make the solution into a complete Lean executable that Kimina can check.
 This should give you the following successful response:
 ```
 {
@@ -68,11 +68,11 @@ curl --request POST \
   --data '[
     {
       "problem_id": "lean_workbook_plus_2",
-		  "answer": "  \n  constructor\n  intro hx\n  constructor\n  nlinarith [hx]\n  nlinarith [hx]\n  rintro ⟨h1, h2⟩\n  nlinarith"
+		  "solution": "  \n  constructor\n  intro hx\n  constructor\n  nlinarith [hx]\n  nlinarith [hx]\n  rintro ⟨h1, h2⟩\n  nlinarith"
     },
     {
       "problem_id": "verina_basic_78",
-		  "answer": "  unfold MultipleReturns_postcond MultipleReturns\n  simp"
+		  "solution": "  unfold MultipleReturns_postcond MultipleReturns\n  simp"
     }
   ]' | jq
 ```
