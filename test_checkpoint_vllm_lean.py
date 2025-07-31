@@ -5,19 +5,26 @@ import argparse
 import os
 import sys
 import json
-import requests # install
+import requests
 import logging
 import multiprocessing
 import atexit
-import aiohttp # install
+import aiohttp
 import asyncio
 from collections import defaultdict
 
-from tqdm import tqdm # install
-from torch.utils.data import Dataset # install
-from vllm import LLM, SamplingParams # install
-from transformers import AutoTokenizer # install
-# from example import check_ground_truth, Task, CheckingResult, VerificationResult, ErrorResult
+from tqdm import tqdm
+from torch.utils.data import Dataset
+from vllm import LLM, SamplingParams
+from transformers import AutoTokenizer
+
+'''
+example of running this file for pass@8 (the model is somehow triple nested in the folder, just check this on your machine):
+python test_checkpoint_vllm_lean.py --model_name fstarcoqlean-qwq-32b-singleturn-sft/fstarcoqlean-qwq-32b-singleturn-sft/fstarcoqlean-qwq-32b-singleturn-sft --sample_n 8 --num_gpus 4 --test_set Verina | tee fstarcoq-qwq-32b-singleturn-rl-lean.log
+
+make sure you have the checkpoint downloaded locally in this directory before running:
+azcopy cp --recursive https://msrfdp.blob.core.windows.net/fdp1/checkpoints/fstarcoqlean-qwq-32b-singleturn-sft/ ./fstarcoqlean-qwq-32b-singleturn-sft/
+'''
 
 async def evaluate_single_example(session, url, payload):
     try:
@@ -74,30 +81,16 @@ async def evaluate_batch(batch, url, args):
         
         return results
 
-if __name__ == "__main__":
-    # Argument parsing
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--model_name", type=str, required=True)
-    parser.add_argument("--sample_n", type=int, default=1)
-    parser.add_argument("--temperature", type=float, default=0.7)
-    parser.add_argument("--debug", action="store_true")
-    parser.add_argument("--num_gpus", type=int, default=2)
-    parser.add_argument("--batch_size", type=int, default=100)
-    parser.add_argument("--test-set", type=str, default="Verina", choices=["Verina", "MiniF2F"])
-    args = parser.parse_args()
-
-    # Load validation data
-    print("Loading validation data...")
-    valid_data = []
-    with open(f"wrapper_server/lean-test-data-{args.test_set}.jsonl") as file:
+def generate_model_responses(args, test_data_fp):
+    print("Loading test data...")
+    test_data = []
+    with open(test_data_fp) as file:
         for line in file:
-            valid_data.append(json.loads(line))
+            test_data.append(json.loads(line))
     if args.debug:
-        valid_data = valid_data[:2]
+        test_data = test_data[:2]
     else:
-        valid_data = valid_data[:600]  # can use c. 700 for test benchmark
-
-    url = os.environ.get("LEAN_VERIFIER_SERVER_HOST", "http://localhost:8007") + "/check_problem_solution"
+        test_data = test_data[:600]  # can use c. 700 for test benchmark
 
     # Load tokenizer and vLLM engine
     print(f"Loading tokenizer and checkpoint from {args.model_name}... ", end="")
@@ -109,7 +102,7 @@ if __name__ == "__main__":
     print("Preparing prompts...")
     prompts = []
     prompt_to_index = []  # (datum_idx, sample_idx)
-    for datum_idx, datum in enumerate(tqdm(valid_data)):
+    for datum_idx, datum in enumerate(tqdm(test_data)):
         prompt = datum["prompt"][0]["content"]
         if len(tokenizer(prompt).input_ids) > 8192:
             continue
@@ -123,23 +116,53 @@ if __name__ == "__main__":
     outputs = llm.generate(prompts, sampling_params)
     print("Done sampling")
 
-    # Organize responses into valid_data
-    for datum in valid_data:
+    # Organize responses into test_data
+    for datum in test_data:
         datum["model_generated_response"] = []  # length of this list will be sample_n
 
     for output, (datum_idx, _) in zip(outputs, prompt_to_index):
         response = output.outputs[0].text
         if "<answer>" in response and "</answer>" in response:
-            valid_data[datum_idx]["model_generated_response"].append(response)
+            test_data[datum_idx]["model_generated_response"].append(response)
 
     output_path = f"lean-test-data-with-responses-{args.test_set}.jsonl"
 
     with open(output_path, "w") as f:
-        for datum in valid_data:
+        for datum in test_data:
             json.dump(datum, f)
             f.write("\n")
 
-    print(f"Saved {len(valid_data)} entries to {output_path}")
+    print(f"Saved {len(test_data)} entries to {output_path}")
+    return test_data
+
+def load_cached_model_responses(test_data_fp):
+    print("Loading test data...")
+    test_data = []
+    with open(test_data_fp) as file:
+        for line in file:
+            test_data.append(json.loads(line))
+    return test_data
+
+if __name__ == "__main__":
+    # Argument parsing
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model_name", type=str, required=True)
+    parser.add_argument("--sample_n", type=int, default=1)
+    parser.add_argument("--temperature", type=float, default=0.7)
+    parser.add_argument("--debug", action="store_true")
+    parser.add_argument("--num_gpus", type=int, default=2)
+    parser.add_argument("--batch_size", type=int, default=100)
+    parser.add_argument("--test_set", type=str, default="Verina", choices=["Verina", "MiniF2F"])
+    args = parser.parse_args()
+
+    # Load test data
+    generate_new_data = True # True if you want to populate new model responses for the test set
+    if generate_new_data:
+        test_data = generate_model_responses(args, f"wrapper_server/lean-test-data-{args.test_set}.jsonl")
+    else:
+        test_data = load_cached_model_responses(f"lean-test-data-with-responses-{args.test_set}.jsonl")
+
+    url = os.environ.get("LEAN_VERIFIER_SERVER_HOST", "http://localhost:8007") + "/check_problem_solution"
 
     # Evaluation using batched async approach
     BATCH_SIZE = args.batch_size
@@ -149,7 +172,7 @@ if __name__ == "__main__":
     current_batch = []
 
     # Prepare all evaluation items
-    for datum in valid_data:
+    for datum in test_data:
         datum_id = datum["extra_info"]["example_name"]
         for i, response in enumerate(datum["model_generated_response"]):
             current_batch.append((datum, i, response, datum_id))
@@ -173,12 +196,12 @@ if __name__ == "__main__":
         pass_n[res["example_name"]].append(res["result"])
 
     print("")
-    print("Total data:", len(valid_data))
+    print("Total data:", len(test_data))
     for i in range(args.sample_n):
         pass_count = sum(1 for results in pass_n.values() if any(results[:i+1]))
         print("PASS COUNT:", pass_count)
-        print(f"Pass@{i+1}:", pass_count / len(valid_data))
+        print(f"Pass@{i+1}:", pass_count / len(test_data))
 
     if not args.debug:
-        with open(f"lean_valid_test_{args.test_set}.json", "w") as file:
+        with open(f"lean_test_results_{args.test_set}.json", "w") as file:
             json.dump(all_results, file, indent=4)
