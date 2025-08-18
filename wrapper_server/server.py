@@ -37,7 +37,7 @@ class Response(BaseModel):
 
 def _create_sqlite_db(conn, cursor):
     for filename in os.listdir(CURRENT_DIR):
-        if filename.endswith(".jsonl") and "sft" not in filename and "lean-rl-data" not in filename: # lean-rl-data is split into train/test, these are the parent files and redundant
+        if filename.endswith(".jsonl") and "lean-rl-data" not in filename: # lean-rl-data is split into train/test, these are the parent files and redundant
             jsonl_path = os.path.join(CURRENT_DIR, filename)
             print(f"Loading {filename}...")
 
@@ -45,11 +45,17 @@ def _create_sqlite_db(conn, cursor):
                 for line in f:
                     try:
                         entry = json_module.loads(line)
-                        entry_id = entry.get("extra_info", {}).get("example_name")
-                        if entry_id is not None:
+                        entry_id_rl = entry.get("extra_info", {}).get("example_name")
+                        entry_id_sft = entry.get("extra_info", {}).get("name")
+                        if entry_id_rl is not None:
                             cursor.execute(
                                 "INSERT OR REPLACE INTO entries (id, data) VALUES (?, ?)",
-                                (entry_id, json_module.dumps(entry))
+                                (entry_id_rl, json_module.dumps(entry))
+                            )
+                        if entry_id_sft is not None:
+                            cursor.execute(
+                                "INSERT OR REPLACE INTO entries (id, data) VALUES (?, ?)",
+                                (entry_id_sft, json_module.dumps(entry))
                             )
                         else:
                             print(f"Skipping entry without example_name in {filename}")
@@ -140,6 +146,15 @@ def _verify_FVAPPS_response(spec, model_response):
             return False # if any segment of the original spec is not in the solution, we return False
     return True # ok
 
+def _extract_oss_lean_executable(answer_block: str) -> str:
+    # Now pull the first ```lean ... ``` fenced block
+    match_code = re.search(r"```lean\s*(.*?)```", answer_block, flags=re.DOTALL)
+    if match_code:
+        return match_code.group(1).strip()
+
+    # fallback: if no fenced block, return inner text
+    return inner.strip()
+
 @app.post("/check_problem_solution")
 async def check_solution(json: Payload, timeout=30) -> Response:
     """
@@ -160,6 +175,8 @@ async def check_solution(json: Payload, timeout=30) -> Response:
     context, formal_statement = _get_context_and_formal_statement(json.problem_id)
 
     is_fvapps = bool(re.fullmatch(r"\d{4}", json.problem_id)) # FVAPPS problem IDs (and only these) are 4-digit numbers
+    is_deepseekv1_sft = bool(re.fullmatch(r"thm_\d+", json.problem_id))
+
     if is_fvapps:
         # For FVAPPS, we need to verify the response against the original spec (which is stored as context)
         is_valid_response = _verify_FVAPPS_response(context, json.solution)
@@ -171,8 +188,14 @@ async def check_solution(json: Payload, timeout=30) -> Response:
             )
         else:
             full_lean_executable = json.solution # for FVAPPS only, the solution is the full executable bc of the multiple sorries
+    elif is_deepseekv1_sft:
+        full_lean_executable = _extract_oss_lean_executable(json.solution)
     else:
         full_lean_executable = _reconstruct_lean_executable(context, formal_statement, json.solution)
+
+    print("FULL EXECUTABLE:")
+    print(full_lean_executable)
+    print()
 
     kimina_requests = [{
             "custom_id": json.problem_id,
